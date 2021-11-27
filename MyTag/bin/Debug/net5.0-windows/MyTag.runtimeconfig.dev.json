@@ -1,0 +1,8 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "C:\\Users\\salto\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\salto\\.nuget\\packages"
+    ]
+  }
+}
