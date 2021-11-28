@@ -9,18 +9,19 @@ namespace MyTag
         private readonly string _name;
         private string _dbName;
         private string _currentPath;
-
-        public Picture(string _dbName)
+        
+        public Picture()
+        {
+            _db = new DB();
+        }        
+        
+        public Picture(string _dbName) : this()
         {
             this._name = _dbName;
-            _db = new DB();
         }
 
-        public Picture(string name, string _currentPath)
+        public Picture(string name, string _currentPath) : this()
         {
-            this._name = name;
-            _db = new DB();
-            
             this._name = name;
             CopyPicture();
         }        
