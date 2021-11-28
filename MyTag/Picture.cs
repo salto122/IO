@@ -8,19 +8,19 @@ namespace MyTag
         private DB _db;
         private readonly string _name;
         private string _dbName;
-        private string _currentPath;
+        private string currentPath;
         
         public Picture()
         {
             _db = new DB();
         }        
         
-        public Picture(string _dbName) : this()
+        public Picture(string dbName) : this()
         {
-            this._name = _dbName;
+            this._name = dbName;
         }
 
-        public Picture(string name, string _currentPath) : this()
+        public Picture(string name, string currentPath) : this()
         {
             this._name = name;
             CopyPicture();
@@ -29,7 +29,7 @@ namespace MyTag
         private void CopyPicture()
         {
             this._dbName = _db.addFile(_name);
-            File.Copy(_currentPath, FileLocation + this._dbName);
+            File.Copy(currentPath, FileLocation + this._dbName);
         }
     }
 }
