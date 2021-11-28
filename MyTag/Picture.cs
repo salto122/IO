@@ -4,9 +4,9 @@ namespace MyTag
 {
     public class Picture
     {
-        private static string fileLocation = @"C:\MyTag\";
+        private const string FileLocation = @"C:\MyTag\";
         private DB _db;
-        private string _name;
+        private readonly string _name;
         private string _dbName;
         private string _currentPath;
         private bool isInDB;
@@ -16,7 +16,7 @@ namespace MyTag
             this._name = name;
             _db = new DB();
 
-            if (!isInDb)
+            if (!isInDB)
             {
                 this._name = name;
                 CopyPicture();
@@ -30,7 +30,7 @@ namespace MyTag
         private void CopyPicture()
         {
             this._dbName = _db.addFile(_name);
-            File.Copy(_currentPath, fileLocation + this._dbName);
+            File.Copy(_currentPath, FileLocation + this._dbName);
         }
     }
 }
