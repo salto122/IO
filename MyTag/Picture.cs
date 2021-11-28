@@ -18,7 +18,12 @@ namespace MyTag
 
             if (!isInDb)
             {
+                this._name = name;
                 CopyPicture();
+            }
+            else
+            {
+                this._dbName = name;
             }
         }
 
