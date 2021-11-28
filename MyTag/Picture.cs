@@ -9,24 +9,22 @@ namespace MyTag
         private readonly string _name;
         private string _dbName;
         private string _currentPath;
-        private bool isInDB;
 
-        public Picture(string name, bool isInDb = true)
+        public Picture(string _dbName)
+        {
+            this._name = _dbName;
+            _db = new DB();
+        }
+
+        public Picture(string name, string _currentPath)
         {
             this._name = name;
             _db = new DB();
-
-            if (!isInDB)
-            {
-                this._name = name;
-                CopyPicture();
-            }
-            else
-            {
-                this._dbName = name;
-            }
-        }
-
+            
+            this._name = name;
+            CopyPicture();
+        }        
+        
         private void CopyPicture()
         {
             this._dbName = _db.addFile(_name);
