@@ -23,6 +23,7 @@ namespace MyTag
         public Picture(string name, string currentPath) : this()
         {
             this._name = name;
+            this.currentPath = currentPath;
             CopyPicture();
         }        
         
