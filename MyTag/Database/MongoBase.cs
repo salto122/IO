@@ -29,5 +29,27 @@ namespace MyTag.Database
 
             return collection.Find(new BsonDocument()).ToList();
         }
+
+        public class PrivateTagsModel
+        {
+            public string Tags { get; set; }
+            public string ExclTags { get; set; }
+        }
+
+        public class UserModel
+        {
+            public Guid guid { get; set; }
+            public string Username { get; set; }
+            public PrivateTagsModel privateTags { get; set; }
+        }
+
+        public class PictureModel
+        {
+            public Guid guid { get; set; }
+            public string OriginalName { get; set; }
+            public DateTime AddedDate { get; set; }
+            public string Tags { get; set; }
+            public string ExclTags { get; set; }
+        }
     }
 }
