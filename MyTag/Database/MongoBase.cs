@@ -18,13 +18,15 @@ namespace MyTag.Database
             db = client.GetDatabase(databaseName);
         }
 
-        public void InsertOneUser<UserModel>(string table, UserModel record)
+        public void InsertOneUser(string table, UserModel record)
         {
             var collection = db.GetCollection<UserModel>(table);
             collection.InsertOne(record);
+
+            var test = record.Id;
         }
 
-        public void InsertOnePicture<PictureModel>(string table, PictureModel record)
+        public void InsertOnePicture(string table, PictureModel record)
         {
             var collection = db.GetCollection<PictureModel>(table);
             collection.InsertOne(record);
