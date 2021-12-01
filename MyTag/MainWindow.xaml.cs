@@ -41,6 +41,8 @@ namespace MyTag
 
 
             db.InsertOneUser("users", user);
+
+            var test2 = user.Id;
         }
     }
 }
