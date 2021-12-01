@@ -24,8 +24,8 @@ namespace MyTag
         public MainWindow()
         {
             InitializeComponent();
-            MongoBase mongoConnection = new MongoBase("testconnection");
             
+
         }
     }
 }
