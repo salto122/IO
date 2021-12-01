@@ -10,9 +10,10 @@ namespace MyTag.Database
     public class MongoConnection
     {
         IMongoDatabase db;
-        public MongoConnection()
+        public MongoConnection(string databaseName)
         {
-            
+            var client = new MongoClient();
+            db = client.GetDatabase(databaseName);
         }
     }
 }
