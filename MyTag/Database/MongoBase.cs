@@ -28,8 +28,6 @@ namespace MyTag.Database
         {
             var collection = db.GetCollection<PictureModel>(table);
             collection.InsertOne(record);
-
-
         }
 
         public List<T> LoadAll<T>(string table)
