@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace MyTag.Database
 {
-    public class MongoConnection
+    public class MongoBase
     {
         IMongoDatabase db;
-        public MongoConnection(string databaseName)
+        public MongoBase(string databaseName)
         {
             var client = new MongoClient();
             db = client.GetDatabase(databaseName);
