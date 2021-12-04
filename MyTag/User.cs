@@ -5,7 +5,7 @@ namespace MyTag
 {
     public class User
     {
-        private UserModel _userModel;
+        private readonly UserModel _userModel;
 
         public User(UserModel userModel)
         {
