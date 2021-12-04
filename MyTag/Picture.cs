@@ -30,7 +30,7 @@ namespace MyTag
         
         private void CopyPicture()
         {
-            this._dbName = _db.addFile(_name);
+            this._dbName = _db.InsertOnePicture(_name);
             File.Copy(currentPath, FileLocation + this._dbName);
         }
     }
