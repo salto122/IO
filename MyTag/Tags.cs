@@ -5,6 +5,7 @@ namespace MyTag
 {
     public class Tags
     {
+        private string _objectId;
         private readonly List<string> _tagList;
         private readonly MongoBase _mongoBase;
 
