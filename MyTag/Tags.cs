@@ -9,9 +9,10 @@ namespace MyTag
         private readonly List<string> _tagList;
         private readonly MongoBase _mongoBase;
 
-        public Tags(List<string> tagList)
+        public Tags(List<string> tagList, string objectId)
         {
             _tagList = tagList;
+            this._objectId = objectId;
             _mongoBase = new MongoBase("baseName");
         }
 
