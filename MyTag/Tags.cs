@@ -5,18 +5,18 @@ namespace MyTag
 {
     public class Tags
     {
-        private List<string> TagList;
-        private MongoBase _mongoBase;
+        private readonly List<string> _tagList;
+        private readonly MongoBase _mongoBase;
 
         public Tags(List<string> tagList)
         {
-            TagList = tagList;
+            _tagList = tagList;
             _mongoBase = new MongoBase("baseName");
         }
 
-        public void SendTagsToDB()
+        public void SendTagsToDb()
         {
-            _mongoBase.SendTags(TagList);
+            _mongoBase.SendTags(_tagList);
         }
     }
 }
