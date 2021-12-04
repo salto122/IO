@@ -16,5 +16,10 @@ namespace MyTag
         {
             _userModel.Username = username;
         }
+
+        public string GetUserName()
+        {
+            return _userModel.Username;
+        }
     }
 }
