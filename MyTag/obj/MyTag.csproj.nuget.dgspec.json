@@ -1,27 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\szpaw\\Source\\Repos\\IO\\MyTag\\MyTag.csproj": {}
+    "D:\\IO\\MyTag\\MyTag.csproj": {}
   },
   "projects": {
-    "C:\\Users\\szpaw\\Source\\Repos\\IO\\MyTag\\MyTag.csproj": {
+    "D:\\IO\\MyTag\\MyTag.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\szpaw\\Source\\Repos\\IO\\MyTag\\MyTag.csproj",
+        "projectUniqueName": "D:\\IO\\MyTag\\MyTag.csproj",
         "projectName": "MyTag",
-        "projectPath": "C:\\Users\\szpaw\\Source\\Repos\\IO\\MyTag\\MyTag.csproj",
-        "packagesPath": "C:\\Users\\szpaw\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\szpaw\\Source\\Repos\\IO\\MyTag\\obj\\",
+        "projectPath": "D:\\IO\\MyTag\\MyTag.csproj",
+        "packagesPath": "C:\\Users\\mike\\.nuget\\packages\\",
+        "outputPath": "D:\\IO\\MyTag\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\szpaw\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\mike\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
-          "net5.0-windows7.0"
+          "net5.0-windows"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -42,7 +40,7 @@
           "dependencies": {
             "MongoDB.Driver": {
               "target": "Package",
-              "version": "[2.14.0, )"
+              "version": "[2.14.1, )"
             }
           },
           "imports": [
@@ -63,7 +61,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Users\\mike\\.dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }

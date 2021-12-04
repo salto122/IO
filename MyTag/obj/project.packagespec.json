@@ -1,1 +1,55 @@
-﻿"restore":{"projectUniqueName":"C:\\Users\\salto\\RiderProjects\\MyTag\\MyTag\\MyTag.csproj","projectName":"MyTag","projectPath":"C:\\Users\\salto\\RiderProjects\\MyTag\\MyTag\\MyTag.csproj","outputPath":"C:\\Users\\salto\\RiderProjects\\MyTag\\MyTag\\obj\\","projectStyle":"PackageReference","originalTargetFrameworks":["net5.0-windows"],"sources":{"C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\":{},"https://api.nuget.org/v3/index.json":{}},"frameworks":{"net5.0-windows7.0":{"targetAlias":"net5.0-windows","projectReferences":{}}},"warningProperties":{"warnAsError":["NU1605"]}}"frameworks":{"net5.0-windows7.0":{"targetAlias":"net5.0-windows","imports":["net461","net462","net47","net471","net472","net48"],"assetTargetFallback":true,"warn":true,"frameworkReferences":{"Microsoft.NETCore.App":{"privateAssets":"all"},"Microsoft.WindowsDesktop.App.WPF":{"privateAssets":"none"}},"runtimeIdentifierGraphPath":"C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"}}
+﻿{
+  "version": "1.0.0",
+  "restore": {
+    "projectUniqueName": "D:\\IO\\MyTag\\MyTag.csproj",
+    "projectName": "MyTag",
+    "projectPath": "D:\\IO\\MyTag\\MyTag.csproj",
+    "outputPath": "D:\\IO\\MyTag\\obj\\",
+    "projectStyle": "PackageReference",
+    "originalTargetFrameworks": [
+      "net50-windows"
+    ],
+    "sources": {
+      "https://api.nuget.org/v3/index.json": {}
+    },
+    "frameworks": {
+      "netcoreapp5.0": {
+        "projectReferences": {}
+      }
+    },
+    "warningProperties": {
+      "warnAsError": [
+        "NU1605"
+      ]
+    }
+  },
+  "frameworks": {
+    "netcoreapp5.0": {
+      "dependencies": {
+        "MongoDB.Driver": {
+          "target": "Package",
+          "version": "[2.14.1, )"
+        }
+      },
+      "imports": [
+        "net461",
+        "net462",
+        "net47",
+        "net471",
+        "net472",
+        "net48"
+      ],
+      "assetTargetFallback": true,
+      "warn": true,
+      "frameworkReferences": {
+        "Microsoft.NETCore.App": {
+          "privateAssets": "all"
+        },
+        "Microsoft.WindowsDesktop.App.WPF": {
+          "privateAssets": "none"
+        }
+      },
+      "runtimeIdentifierGraphPath": "C:\\Users\\mike\\.dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
+    }
+  }
+}
