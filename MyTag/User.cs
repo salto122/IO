@@ -12,5 +12,9 @@ namespace MyTag
             _userModel = new UserModel();
         }
 
+        public void SetUserName(string username)
+        {
+            _userModel.Username = username;
+        }
     }
 }
