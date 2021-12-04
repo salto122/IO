@@ -12,7 +12,11 @@ namespace MyTag.Database
         public DateTime AddedDate { get; set; }
         public string Tags { get; set; }
         public string ExclTags { get; set; }
+
+        public PictureModel(string originalName, string tags)
+        {
+            OriginalName = originalName;
+            Tags = tags;
+        }
     }
-    
-    
 }
