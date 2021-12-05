@@ -23,6 +23,73 @@ namespace MyTag
         public MainWindow()
         {
             InitializeComponent();
+
+            var images = GetImages();
+            if (images.Count > 0)
+                ListViewImages.ItemsSource = images;
+        }
+
+        private List<ImageTest> GetImages()
+        {
+            return new List<ImageTest>()
+      {
+        new ImageTest("#TAG", "Assets/test.jpg")
+
+        
+
+      };
+        }
+
+        private void BT_ShowMyTags_CLick(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BT_AddNewTag_CLick(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BT_DeleteTag_CLick(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BT_ModifyTag_CLick(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BT_FavouriteTags_CLick(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BT_RecentImages_CLick(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BT_ImportImages_CLick(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BT_Settings_CLick(object sender, RoutedEventArgs e)
+        {
+
+        }
+    }
+
+    public partial class ImageTest
+    {
+        public string Tag { get; set; }
+        public string ImagePath { get; set; }
+
+        public ImageTest(string tag, string imagePath)
+        {
+            Tag = tag;
+            ImagePath = imagePath;
         }
     }
 }

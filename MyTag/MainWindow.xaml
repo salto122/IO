@@ -4,9 +4,67 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MyTag"
+        xmlns:language="clr-namespace:MyTag.Properties.Langs"        
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MyTag" Height="450" Width="800">
+    
     <Grid>
 
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="50"> </ColumnDefinition>
+            <ColumnDefinition Width="200"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="200"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <TextBox Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" x:Name="TBSerach" HorizontalAlignment="Stretch" TextAlignment="Left" Margin="50,15,200,40" MaxLength="30" MinHeight="15"/>
+        <StackPanel Grid.Row="1" Grid.RowSpan="4" Grid.Column="1">
+            <Button x:Name="BT_ShowMyTags" Content="{x:Static language:myLang.BT_ShowMyTags}" Margin="10,10,10,3" HorizontalAlignment="Stretch" Click="BT_ShowMyTags_CLick"/>
+            <Button x:Name="BT_AddNewTag" Content="{x:Static language:myLang.BT_AddNewTag}" Margin="10,3,10,3" HorizontalAlignment="Stretch" Click="BT_AddNewTag_CLick"/>
+            <Button x:Name="BT_DeleteTag" Content="{x:Static language:myLang.BT_DeleteTag}" Margin="10,3,10,3" HorizontalAlignment="Stretch" Click="BT_DeleteTag_CLick"/>
+            <Button x:Name="BT_ModifyTag" Content="{x:Static language:myLang.BT_ModifyTag}" Margin="10,3,10,3" HorizontalAlignment="Stretch" Click="BT_ModifyTag_CLick"/>
+            <Button x:Name="BT_FavouriteTags" Content="{x:Static language:myLang.BT_FavouriteTags}" Margin="10,3,10,3" HorizontalAlignment="Stretch" Click="BT_FavouriteTags_CLick"/>
+            <Button x:Name="BT_RecentImages" Content="{x:Static language:myLang.BT_RecentImages}" Margin="10,3,10,3" HorizontalAlignment="Stretch" Click="BT_RecentImages_CLick"/>
+            <Button x:Name="BT_ImportImages" Content="{x:Static language:myLang.BT_ImportImages}" Margin="10,3,10,3" HorizontalAlignment="Stretch" Click="BT_ImportImages_CLick"/>
+            <Button x:Name="BT_Settings" Content="{x:Static language:myLang.BT_Settings}" Margin="10,3,10,3" HorizontalAlignment="Stretch" Click="BT_Settings_CLick"/>
+        </StackPanel>
+        <ScrollViewer Grid.Row="1" Grid.Column="2" Grid.RowSpan="4" Margin="10,10,10,10" Background="#FFF1F1F1">
+            <StackPanel>
+                <TextBlock Text="Items" Margin="10" FontSize="22" FontWeight="Medium"/>
+                <StackPanel Margin="20 0">
+                    <ItemsControl x:Name="ListViewImages" ItemsSource="{Binding ImageTest}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Border Margin="10" Width="110" Height="160">
+                                    <StackPanel>
+                                        <Border Width="100" Height="100" CornerRadius="5" Margin="5">
+                                            <Border.Effect>
+                                                <DropShadowEffect ShadowDepth="1"/>
+                                            </Border.Effect>
+                                            <Border.Background>
+                                                <ImageBrush ImageSource="{Binding ImagePath}"/>
+                                            </Border.Background>
+                                        </Border>
+                                        <TextBlock Margin="5" Text="{Binding Tag}" FontSize="13" FontFamily="Franklin Gothic Medium"/>
+                                        
+                                    </StackPanel>
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                    </ItemsControl>
+                </StackPanel>
+            </StackPanel>
+        </ScrollViewer>
     </Grid>
 </Window>

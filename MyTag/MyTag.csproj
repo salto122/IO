@@ -6,4 +6,32 @@
         <UseWPF>true</UseWPF>
     </PropertyGroup>
 
+    <ItemGroup>
+      <Compile Update="Langs\myLang.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>myLang.resx</DependentUpon>
+      </Compile>
+      <Compile Update="Properties\Langs\myLang.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>myLang.resx</DependentUpon>
+      </Compile>
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Update="Langs\myLang.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+        <LastGenOutput>myLang.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Properties\Langs\myLang.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+        <LastGenOutput>myLang.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Assets\" />
+    </ItemGroup>
+
 </Project>
