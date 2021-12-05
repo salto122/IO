@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\IO prjk\\MyTag\\MyTag.csproj": {}
+    "C:\\REPOZYTORIA\\IO prj\\MyTag\\MyTag.csproj": {}
   },
   "projects": {
-    "C:\\IO prjk\\MyTag\\MyTag.csproj": {
+    "C:\\REPOZYTORIA\\IO prj\\MyTag\\MyTag.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\IO prjk\\MyTag\\MyTag.csproj",
+        "projectUniqueName": "C:\\REPOZYTORIA\\IO prj\\MyTag\\MyTag.csproj",
         "projectName": "MyTag",
-        "projectPath": "C:\\IO prjk\\MyTag\\MyTag.csproj",
+        "projectPath": "C:\\REPOZYTORIA\\IO prj\\MyTag\\MyTag.csproj",
         "packagesPath": "C:\\Users\\Marcin\\.nuget\\packages\\",
-        "outputPath": "C:\\IO prjk\\MyTag\\obj\\",
+        "outputPath": "C:\\REPOZYTORIA\\IO prj\\MyTag\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -63,7 +63,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.301\\RuntimeIdentifierGraph.json"
         }
       }
     }
