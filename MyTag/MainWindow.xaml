@@ -24,8 +24,13 @@
             <ColumnDefinition Width="200"></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
-        <Label x:Name="LB_UserName" Content="UserName"/> <!-- add binding -->
-        <TextBox Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" x:Name="TBSerach" HorizontalAlignment="Stretch" TextAlignment="Left" Margin="50,15,200,40" MaxLength="30" MinHeight="15"/>
+        <Label Grid.Row="0" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="LB_UserName" Content="UserName"/> <!-- add data binding -->
+        <Label Grid.Row="0" Grid.Column="2" x:Name="LB_SearchedTags" VerticalAlignment="Bottom" Margin="5,0,0,0" Content="#Recently #Searched #Tags"/> <!-- add data binding -->
+
+        <Image x:Name="Image_Logo" Grid.Column="0"  Grid.Row="0" Grid.ColumnSpan="2"  VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10" Height="100" Width="100"  Source="C:/REPOZYTORIA/IO prj/MyTag/Assets/logo.jpg"></Image> <!-- add data binding -->
+
+
+        <TextBox Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" x:Name="TBSerach" HorizontalAlignment="Stretch" TextAlignment="Left" Margin="70,15,200,40" MaxLength="30" MinHeight="15"/>
         <StackPanel Grid.Row="1" Grid.RowSpan="4" Grid.Column="1">
             <Button x:Name="BT_ShowMyTags" Content="{x:Static language:myLang.BT_ShowMyTags}" Margin="10,10,10,3" HorizontalAlignment="Stretch" Click="BT_ShowMyTags_CLick"/>
             <Button x:Name="BT_AddNewTag" Content="{x:Static language:myLang.BT_AddNewTag}" Margin="10,3,10,3" HorizontalAlignment="Stretch" Click="BT_AddNewTag_CLick"/>

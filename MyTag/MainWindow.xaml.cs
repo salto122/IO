@@ -20,6 +20,10 @@ namespace MyTag
     /// </summary>
     public partial class MainWindow : Window
     {
+        public string DisplayedLogo
+        {
+           get { return @"C:/REPOZYTORIA/IO prj/MyTag/Assets/logo.jpg"; }
+        }
         public MainWindow()
         {
             InitializeComponent();
@@ -28,7 +32,7 @@ namespace MyTag
             if (images.Count > 0)
                 ListViewImages.ItemsSource = images;
 
-            
+           
         }
 
         private List<ImageTest> GetImages()
@@ -36,7 +40,8 @@ namespace MyTag
             return new List<ImageTest>()
       {
         new ImageTest("#TAG1", "C:/REPOZYTORIA/IO prj/MyTag/Assets/test.jpg"),
-        new ImageTest("#TAG2", "C:/REPOZYTORIA/IO prj/MyTag/Assets/test.jpg")
+        new ImageTest("#TAG2", "C:/REPOZYTORIA/IO prj/MyTag/Assets/test.jpg"),
+        new ImageTest("#TAG2", "C:/REPOZYTORIA/IO prj/MyTag/Assets/logo.jpg")
 
         
 
