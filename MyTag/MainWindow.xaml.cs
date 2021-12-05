@@ -27,13 +27,16 @@ namespace MyTag
             var images = GetImages();
             if (images.Count > 0)
                 ListViewImages.ItemsSource = images;
+
+            
         }
 
         private List<ImageTest> GetImages()
         {
             return new List<ImageTest>()
       {
-        new ImageTest("#TAG", "Assets/test.jpg")
+        new ImageTest("#TAG1", "C:/REPOZYTORIA/IO prj/MyTag/Assets/test.jpg"),
+        new ImageTest("#TAG2", "C:/REPOZYTORIA/IO prj/MyTag/Assets/test.jpg")
 
         
 
@@ -79,17 +82,24 @@ namespace MyTag
         {
 
         }
+        private void BT_Image_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 
     public partial class ImageTest
     {
         public string Tag { get; set; }
         public string ImagePath { get; set; }
+        public BitmapImage Image { get; set; }
 
         public ImageTest(string tag, string imagePath)
         {
             Tag = tag;
             ImagePath = imagePath;
+            Image = new BitmapImage(new Uri(imagePath, UriKind.Relative));
+
         }
     }
 }
