@@ -23,13 +23,16 @@ namespace MyTag.Database
             var collection = db.GetCollection<UserModel>(table);
             collection.InsertOne(record);
 
-            var test = record.Id;
+            
         }
 
-        public void InsertOnePicture(string table, PictureModel record)
+        public string InsertOnePicture(string table, PictureModel record)
         {
+            record.AddedDate = DateTime.Now;
             var collection = db.GetCollection<PictureModel>(table);
             collection.InsertOne(record);
+
+            return record.Id.ToString();
         }
 
         public List<T> LoadAll<T>(string table)
