@@ -26,9 +26,27 @@ namespace MyTag
         {
             InitializeComponent();
 
-            
+            MongoBase db = new MongoBase("testconnection");
 
-            
+            UserModel user = new UserModel
+            {
+                Username = "Joe",
+                Tags = "#meme, #car, #funny",
+
+            };
+
+            PictureModel picture = new PictureModel
+            {
+                OriginalName = "oryginalna2 nazwa",
+                Tags = "#car, #kek",
+            };
+
+
+            string testowystring = db.InsertOnePicture("pictures", picture);
+
+            db.InsertOneUser("users", user);
+
+
         }
     }
 }

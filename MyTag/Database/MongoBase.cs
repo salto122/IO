@@ -22,8 +22,6 @@ namespace MyTag.Database
         {
             var collection = db.GetCollection<UserModel>(table);
             collection.InsertOne(record);
-
-            
         }
 
         public string InsertOnePicture(string table, PictureModel record)
