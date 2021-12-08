@@ -25,8 +25,6 @@ namespace MyTag
         public MainWindow()
         {
             InitializeComponent();
-
-
         }
     }
 }
