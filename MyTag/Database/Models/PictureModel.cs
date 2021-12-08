@@ -6,6 +6,12 @@ namespace MyTag.Database
 {
     public class PictureModel
     {
+        public PictureModel(string originalName, string tags)
+        {
+            OriginalName = originalName;
+            Tags = tags;
+        }
+
         [BsonId]
         public ObjectId Id { get; set; }
         public string OriginalName { get; set; }

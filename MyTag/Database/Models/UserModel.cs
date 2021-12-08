@@ -7,6 +7,12 @@ namespace MyTag.Database
 {
     public class UserModel
     {
+        public UserModel(string username, string tags)
+        {
+            Username = username;
+            Tags = tags;
+        }
+
         [BsonId]
         public ObjectId Id { get; set; }
         public string Username { get; set; }
