@@ -26,23 +26,7 @@ namespace MyTag
         {
             InitializeComponent();
 
-            MongoBase db = new MongoBase("testconnection");
 
-            UserModel user = new UserModel
-            {
-                Username = "Joe",
-                privateTags = new PrivateTagsModel
-                {
-                    Tags = "#meme, #car, #funny",
-                    ExclTags = "#motorcycle, #notfunny"
-                }
-            };
-
-
-
-            db.InsertOneUser("users", user);
-
-            var test2 = user.Id;
         }
     }
 }
