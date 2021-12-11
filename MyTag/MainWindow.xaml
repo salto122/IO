@@ -24,6 +24,7 @@
             <ColumnDefinition Width="200"></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
+
         <Label Grid.Row="0" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="LB_UserName" Content="UserName"/>
         <!-- add data binding -->
         <Label Grid.Row="0" Grid.Column="2" x:Name="LB_SearchedTags" VerticalAlignment="Bottom" Margin="5,0,0,0" Content="#Recently #Searched #Tags"/>
@@ -33,7 +34,23 @@
         <!-- add data binding -->
 
 
-        <TextBox Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" x:Name="TBSerach" HorizontalAlignment="Stretch" TextAlignment="Left" Margin="70,15,200,40" MaxLength="30" MinHeight="15"/>
+        <TextBox Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3"  HorizontalAlignment="Stretch" TextAlignment="Left" Margin="70,15,200,40" MaxLength="30" Height="25">
+            <TextBox.Template>
+                <ControlTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions></Grid.ColumnDefinitions>
+                        <TextBox x:Name="TB_Search" Padding="5,3,0,0" Grid.Column="0" KeyDown="TB_PressEnter"></TextBox>
+                        <Button x:Name="BT_Search"  HorizontalAlignment="Right" Width="25" Click="BT_Search_Click" >
+                            <StackPanel VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                                <Image Source="C:/REPOZYTORIA/IO prj/MyTag/Assets/logo.jpg" VerticalAlignment="Stretch"/>
+                            </StackPanel>
+                        </Button>
+                    </Grid>
+                </ControlTemplate>
+            </TextBox.Template>
+        </TextBox>
+
+
         <StackPanel Grid.Row="1" Grid.RowSpan="4" Grid.Column="1">
             <Button x:Name="BT_ShowMyTags" Content="{x:Static language:myLang.BT_ShowMyTags}" Margin="10,10,10,3" HorizontalAlignment="Stretch" Click="BT_ShowMyTags_CLick"/>
             <Button x:Name="BT_AddNewTag" Content="{x:Static language:myLang.BT_AddNewTag}" Margin="10,3,10,3" HorizontalAlignment="Stretch" Click="BT_AddNewTag_CLick"/>
@@ -45,17 +62,17 @@
             <Button x:Name="BT_Settings" Content="{x:Static language:myLang.BT_Settings}" Margin="10,3,10,3" HorizontalAlignment="Stretch" Click="BT_Settings_CLick"/>
         </StackPanel>
 
-        
+
         <ListBox SelectionChanged="LB_SelImgae" Grid.Row="1" Grid.Column="2" Grid.RowSpan="4" x:Name="ListViewImages" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemsSource="{Binding ImageTest}" SelectedItem="{Binding SelectedImage}">
             <ListBox.ContextMenu>
                 <ContextMenu x:Name="CM_ListBox"  Margin="-33,0,0,0"  Background="#5a5c60"  Foreground="#00132a" Width="145" >
-                    <MenuItem Header="{x:Static language:myLang.CM_OpenLocation}" Click="CM_BT_OpenLocation"/> 
-                    <MenuItem Header="{x:Static language:myLang.CM_Open}" Click="CM_BT_Open"/> 
-                    <MenuItem Header="{x:Static language:myLang.CM_ModifyTags}" Click="CM_BT_ModifyTags"/> 
-                    <MenuItem Header="{x:Static language:myLang.CM_Rotate}" Click="CM_BT_Rotate"/> 
+                    <MenuItem Header="{x:Static language:myLang.CM_OpenLocation}" Click="CM_BT_OpenLocation"/>
+                    <MenuItem Header="{x:Static language:myLang.CM_Open}" Click="CM_BT_Open"/>
+                    <MenuItem Header="{x:Static language:myLang.CM_ModifyTags}" Click="CM_BT_ModifyTags"/>
+                    <MenuItem Header="{x:Static language:myLang.CM_Rotate}" Click="CM_BT_Rotate"/>
                     <MenuItem Header="{x:Static language:myLang.CM_Rename}" Click="CM_BT_Rename"/>
                     <MenuItem Header="{x:Static language:myLang.CM_CopyPath}" Click="CM_BT_CopyPath"/>
-                    <MenuItem Header="{x:Static language:myLang.CM_SaveOnDesktop}" Click="CM_BT_SaveOnDesktop"/> 
+                    <MenuItem Header="{x:Static language:myLang.CM_SaveOnDesktop}" Click="CM_BT_SaveOnDesktop"/>
                     <Separator/>
                     <MenuItem Header="{x:Static language:myLang.CM_Delete}" Click="CM_BT_Delete"/>
                 </ContextMenu>

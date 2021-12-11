@@ -105,41 +105,17 @@ namespace MyTag
         private void BT_Settings_CLick(object sender, RoutedEventArgs e)
         {
 
-        }       
-        
-        private void CM_BT_OpenLocation(object sender, RoutedEventArgs e)
+        }
+
+        private void BT_Search_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void TB_PressEnter(object sender, RoutedEventArgs e)
         {
 
         }
 
-        private void CM_BT_Open(object sender, RoutedEventArgs e)
-        {
-
-        }
-        private void CM_BT_ModifyTags(object sender, RoutedEventArgs e)
-        {
-
-        }
-        private void CM_BT_Rotate(object sender, RoutedEventArgs e)
-        {
-
-        }
-        private void CM_BT_Rename(object sender, RoutedEventArgs e)
-        {
-
-        }
-        private void CM_BT_CopyPath(object sender, RoutedEventArgs e)
-        {
-
-        }
-        private void CM_BT_SaveOnDesktop(object sender, RoutedEventArgs e)
-        {
-
-        }
-        private void CM_BT_Delete(object sender, RoutedEventArgs e)
-        {
-
-        }
         public partial class ImageTest
         {
             public string Tag { get; set; }
