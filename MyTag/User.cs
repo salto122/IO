@@ -9,7 +9,7 @@ namespace MyTag
 
         public User(UserModel userModel)
         {
-            _userModel = new UserModel();
+            _userModel = userModel;
         }
 
         public void SetUserName(string username)
