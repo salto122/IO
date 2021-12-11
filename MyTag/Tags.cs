@@ -18,7 +18,7 @@ namespace MyTag
 
         public void SendTagsToDb()
         {
-            _mongoBase.SendTags(_tagList);
+            //_mongoBase.SendTags(_tagList); not implemented yet
         }
     }
 }
