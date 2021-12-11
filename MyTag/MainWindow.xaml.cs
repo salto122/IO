@@ -62,11 +62,30 @@ namespace MyTag
         }
         private void LB_SelImgae(object sender, SelectionChangedEventArgs e)
         {
+
             var item = (ListBox)sender;
-           TB_TagList.Text= ((ImageTest)item.SelectedItem).Tag;
+            if (ListViewImages.SelectedItem != null)
+                TB_TagList.Text = ((ImageTest)item.SelectedItem).Tag;
+            if (ListViewImages.SelectedItem == null)
+                TB_TagList.Text = string.Empty;
+
+        }
+        private void ListViewImages_ContextMenuOpening(object sender, ContextMenuEventArgs e)
+        {
+            if (ListViewImages.SelectedItem == null)
+                e.Handled = true;
         }
 
+        private void ListViewImages_MouseDown(object sender, MouseButtonEventArgs e)
+        {
 
+            HitTestResult r = VisualTreeHelper.HitTest(this, e.GetPosition(this));
+            if (r.VisualHit.GetType() != typeof(ListBoxItem))
+            {
+                ListViewImages.UnselectAll();
+                ListViewImages.SelectedItem = null;
+            }
+        }
         private void BT_ShowMyTags_CLick(object sender, RoutedEventArgs e)
         {
 
@@ -131,9 +150,6 @@ namespace MyTag
             }
         }
 
-        private void MenuItem_Click_2(object sender, RoutedEventArgs e)
-        {
 
-        }
     }
 }
