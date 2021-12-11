@@ -45,7 +45,21 @@
             <Button x:Name="BT_Settings" Content="{x:Static language:myLang.BT_Settings}" Margin="10,3,10,3" HorizontalAlignment="Stretch" Click="BT_Settings_CLick"/>
         </StackPanel>
 
+        
         <ListBox SelectionChanged="LB_SelImgae" Grid.Row="1" Grid.Column="2" Grid.RowSpan="4" x:Name="ListViewImages" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemsSource="{Binding ImageTest}" SelectedItem="{Binding SelectedImage}">
+            <ListBox.ContextMenu>
+                <ContextMenu x:Name="CM_ListBox"  Margin="-33,0,0,0"  Background="#5a5c60"  Foreground="#00132a" Width="145" >
+                    <MenuItem Header="{x:Static language:myLang.CM_OpenLocation}" Click="CM_BT_OpenLocation"/> 
+                    <MenuItem Header="{x:Static language:myLang.CM_Open}" Click="CM_BT_Open"/> 
+                    <MenuItem Header="{x:Static language:myLang.CM_ModifyTags}" Click="CM_BT_ModifyTags"/> 
+                    <MenuItem Header="{x:Static language:myLang.CM_Rotate}" Click="CM_BT_Rotate"/> 
+                    <MenuItem Header="{x:Static language:myLang.CM_Rename}" Click="CM_BT_Rename"/>
+                    <MenuItem Header="{x:Static language:myLang.CM_CopyPath}" Click="CM_BT_CopyPath"/>
+                    <MenuItem Header="{x:Static language:myLang.CM_SaveOnDesktop}" Click="CM_BT_SaveOnDesktop"/> 
+                    <Separator/>
+                    <MenuItem Header="{x:Static language:myLang.CM_Delete}" Click="CM_BT_Delete"/>
+                </ContextMenu>
+            </ListBox.ContextMenu>
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel Orientation="Horizontal"/>

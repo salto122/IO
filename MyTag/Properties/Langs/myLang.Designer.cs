@@ -131,5 +131,77 @@ namespace MyTag.Properties.Langs {
                 return ResourceManager.GetString("BT_ShowMyTags", resourceCulture);
             }
         }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Copy path.
+        /// </summary>
+        public static string CM_CopyPath {
+            get {
+                return ResourceManager.GetString("CM_CopyPath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Delete.
+        /// </summary>
+        public static string CM_Delete {
+            get {
+                return ResourceManager.GetString("CM_Delete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Modify tags.
+        /// </summary>
+        public static string CM_ModifyTags {
+            get {
+                return ResourceManager.GetString("CM_ModifyTags", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Open.
+        /// </summary>
+        public static string CM_Open {
+            get {
+                return ResourceManager.GetString("CM_Open", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Open location.
+        /// </summary>
+        public static string CM_OpenLocation {
+            get {
+                return ResourceManager.GetString("CM_OpenLocation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Rename.
+        /// </summary>
+        public static string CM_Rename {
+            get {
+                return ResourceManager.GetString("CM_Rename", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Rotate.
+        /// </summary>
+        public static string CM_Rotate {
+            get {
+                return ResourceManager.GetString("CM_Rotate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Save on desktop.
+        /// </summary>
+        public static string CM_SaveOnDesktop {
+            get {
+                return ResourceManager.GetString("CM_SaveOnDesktop", resourceCulture);
+            }
+        }
     }
 }
