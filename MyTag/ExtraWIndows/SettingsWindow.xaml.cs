@@ -23,5 +23,15 @@ namespace MyTag.ExtraWIndows
         {
             InitializeComponent();
         }
+
+        private void BT_Cancel_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
+        private void BT_Save_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
     }
 }

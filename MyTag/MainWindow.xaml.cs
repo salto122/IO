@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using MyTag.ExtraWIndows;
 
 namespace MyTag
 {
@@ -123,7 +124,9 @@ namespace MyTag
 
         private void BT_Settings_CLick(object sender, RoutedEventArgs e)
         {
-
+            SettingsWindow MySettingWindow = new SettingsWindow();
+           
+            MySettingWindow.ShowDialog();
         }
 
         private void BT_Search_Click(object sender, RoutedEventArgs e)
