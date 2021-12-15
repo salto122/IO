@@ -30,7 +30,13 @@ namespace MyTag.Database
             var collection = db.GetCollection<PictureModel>(table);
             collection.InsertOne(record);
 
-            return record.Id.ToString();
+            return record.Id.ToString(); // returns ObjectId
+        }
+
+        public void UpdateOnePicture(string table, ObjectId id, PictureModel record)
+        {
+            var collection = db.GetCollection<PictureModel>(table);
+
         }
 
         public List<T> LoadAll<T>(string table)
