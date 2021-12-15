@@ -25,6 +25,13 @@ namespace MyTag.Database
             collection.InsertOne(record);
         }
 
+        public void DeleteOneUser(string table, ObjectId id)
+        {
+            var collection = db.GetCollection<UserModel>(table);
+            var filter = Builders<UserModel>.Filter.Eq("_id", id);
+            collection.DeleteOne(filter);
+        }
+
         public ObjectId InsertOnePicture(string table, PictureModel record)
         {
             record.AddedDate = DateTime.Now;
@@ -34,7 +41,7 @@ namespace MyTag.Database
             return record.Id; // returns ObjectId
         }
 
-        public PictureModel LoadOnePicture(string table, ObjectId id)
+        public PictureModel LoadOnePicture(string table, ObjectId id) // search
         {
             var collection = db.GetCollection<PictureModel>(table);
             var filter = Builders<PictureModel>.Filter.Eq("_id", id);
@@ -42,7 +49,7 @@ namespace MyTag.Database
             return collection.Find(filter).First();
         }
 
-        public void UpsertOnePicture(string table, ObjectId id, PictureModel record)
+        public void UpsertOnePicture(string table, ObjectId id, PictureModel record) //update or insert
         {
             var collection = db.GetCollection<PictureModel>(table);
             var result = collection.ReplaceOne(new BsonDocument("_id", id), record, new ReplaceOptions { IsUpsert = true });
