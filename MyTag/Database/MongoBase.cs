@@ -46,9 +46,11 @@ namespace MyTag.Database
             collection.DeleteOne(filter);
         }
 
-        public List<T> LoadAll<T>(string table)
+
+
+        public List<PictureModel> LoadPictures(string table)
         {
-            var collection = db.GetCollection<T>(table);
+            var collection = db.GetCollection<PictureModel>(table);
 
             return collection.Find(new BsonDocument()).ToList();
         }
