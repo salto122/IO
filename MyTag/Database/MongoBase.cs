@@ -33,10 +33,10 @@ namespace MyTag.Database
             return record.Id.ToString(); // returns ObjectId
         }
 
-        public void UpdateOnePicture(string table, ObjectId id, PictureModel record)
+        public void UpsertOnePicture(string table, ObjectId id, PictureModel record)
         {
             var collection = db.GetCollection<PictureModel>(table);
-
+            var result = collection.ReplaceOne(new BsonDocument("_id", id), record, new ReplaceOptions { IsUpsert = true });
         }
 
         public List<T> LoadAll<T>(string table)
