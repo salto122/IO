@@ -39,6 +39,13 @@ namespace MyTag.Database
             var result = collection.ReplaceOne(new BsonDocument("_id", id), record, new ReplaceOptions { IsUpsert = true });
         }
 
+        public void DeleteOnePicture(string table, ObjectId id)
+        {
+            var collection = db.GetCollection<PictureModel>(table);
+            var filter = Builders<PictureModel>.Filter.Eq("_id", id);
+            collection.DeleteOne(filter);
+        }
+
         public List<T> LoadAll<T>(string table)
         {
             var collection = db.GetCollection<T>(table);
