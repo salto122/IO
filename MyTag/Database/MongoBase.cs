@@ -12,6 +12,7 @@ namespace MyTag.Database
     public class MongoBase
     {
         IMongoDatabase db;
+
         public MongoBase(string databaseName)
         {
             var client = new MongoClient();
@@ -24,13 +25,21 @@ namespace MyTag.Database
             collection.InsertOne(record);
         }
 
-        public string InsertOnePicture(string table, PictureModel record)
+        public ObjectId InsertOnePicture(string table, PictureModel record)
         {
             record.AddedDate = DateTime.Now;
             var collection = db.GetCollection<PictureModel>(table);
             collection.InsertOne(record);
 
-            return record.Id.ToString(); // returns ObjectId
+            return record.Id; // returns ObjectId
+        }
+
+        public PictureModel LoadOnePicture(string table, ObjectId id)
+        {
+            var collection = db.GetCollection<PictureModel>(table);
+            var filter = Builders<PictureModel>.Filter.Eq("_id", id);
+
+            return collection.Find(filter).First();
         }
 
         public void UpsertOnePicture(string table, ObjectId id, PictureModel record)
@@ -45,8 +54,6 @@ namespace MyTag.Database
             var filter = Builders<PictureModel>.Filter.Eq("_id", id);
             collection.DeleteOne(filter);
         }
-
-
 
         public List<PictureModel> LoadPictures(string table)
         {
