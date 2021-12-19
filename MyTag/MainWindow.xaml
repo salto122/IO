@@ -10,9 +10,9 @@
         MinWidth="600"
         MinHeight="450"
         >
-       
+
     <Grid>
- 
+
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
@@ -34,10 +34,10 @@
         <!-- add data binding -->
 
         <Image x:Name="Image_Logo" Grid.Column="0"  Grid.Row="0" Grid.ColumnSpan="2"  VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10" Height="100" Width="100"></Image>
-        
 
 
-        <TextBox Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3"  HorizontalAlignment="Stretch" TextAlignment="Left" Margin="70,15,200,40" MaxLength="30" Height="25">
+
+        <TextBox  Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3"  HorizontalAlignment="Stretch" TextAlignment="Left" Margin="70,15,200,40" MaxLength="30" Height="25">
             <TextBox.Template>
                 <ControlTemplate>
                     <Grid>
@@ -45,7 +45,7 @@
                         <TextBox x:Name="TB_Search" Padding="5,3,0,0" Grid.Column="0" KeyDown="TB_PressEnter"></TextBox>
                         <Button x:Name="BT_Search"  HorizontalAlignment="Right" Width="25" Click="BT_Search_Click" >
                             <StackPanel VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
-                                <Image Source="C:/REPOZYTORIA/IO prj/MyTag/Assets/logo.jpg" VerticalAlignment="Stretch"/>
+                                <Image Source="/magnifyingGlass.png" VerticalAlignment="Stretch"></Image>
                             </StackPanel>
                         </Button>
                     </Grid>

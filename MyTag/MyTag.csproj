@@ -11,6 +11,10 @@
     </ItemGroup>
 
     <ItemGroup>
+      <None Remove="magnifyingGlass.png" />
+    </ItemGroup>
+
+    <ItemGroup>
       <Compile Update="Langs\myLang.Designer.cs">
         <DesignTime>True</DesignTime>
         <AutoGen>True</AutoGen>
@@ -44,6 +48,10 @@
 
     <ItemGroup>
       <PackageReference Include="MongoDB.Driver" Version="2.14.1" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Resource Include="magnifyingGlass.png" />
     </ItemGroup>
 
 </Project>

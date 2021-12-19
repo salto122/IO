@@ -23,11 +23,10 @@ namespace MyTag
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
+    /// 
+
     public partial class MainWindow : Window
     {
-
-        string ImageTestPath = @"/Assets/test.jpg";
-
         public MainWindow()
         {
             InitializeComponent();
@@ -50,13 +49,17 @@ namespace MyTag
                 TB_TagList.Text = TEST.Tag.ToString();
             }
 
+
         }
 
         private void LoadLogo()
         {
             string LogoPath = System.IO.Path.Combine(Directory.GetParent(System.IO.Directory.GetCurrentDirectory()).Parent.Parent.FullName) + @"\Assets\logo.jpg";
             Image_Logo.Source = new BitmapImage(new Uri(LogoPath));
+
         }
+
+
 
         private void LB_SelImgae(object sender, SelectionChangedEventArgs e)
         {
@@ -122,7 +125,7 @@ namespace MyTag
         private void BT_Settings_CLick(object sender, RoutedEventArgs e)
         {
             SettingsWindow MySettingWindow = new SettingsWindow();
-           
+
             MySettingWindow.ShowDialog();
         }
 
