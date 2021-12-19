@@ -370,6 +370,10 @@ FodyWeavers.xsd
 /.idea/shelf/*
 /.idea/dictionaries
 /.idea/httpRequests/
+/.idea/.idea.MyTag/.idea/
+/.idea/.idea.MyTag/
+/.idea/
+
 
 # Sensitive or high-churn files
 /.idea//dataSources/
