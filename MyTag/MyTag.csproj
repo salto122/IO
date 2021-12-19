@@ -7,6 +7,10 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <Compile Remove="Picture.cs" />
+    </ItemGroup>
+
+    <ItemGroup>
       <Compile Update="Langs\myLang.Designer.cs">
         <DesignTime>True</DesignTime>
         <AutoGen>True</AutoGen>
@@ -32,6 +36,10 @@
 
     <ItemGroup>
       <Folder Include="Assets\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Include="Picture.cs" />
     </ItemGroup>
 
     <ItemGroup>

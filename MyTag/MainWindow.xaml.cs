@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -22,36 +25,23 @@ namespace MyTag
     /// </summary>
     public partial class MainWindow : Window
     {
-        public string DisplayedLogo
-        {
-            get { return @".Assets\logo.jpg"; }
-        }
+
+        string ImageTestPath = @"/Assets/test.jpg";
+
         public MainWindow()
         {
             InitializeComponent();
 
-            var Images = new List<ImageTest>()
-                                              {
-                                                new ImageTest("#TAG1", ".Assets/test.jpg"),
-                                                new ImageTest("#TAG2", ".Assets/test.jpg"),
-                                                new ImageTest("#TAG3", ".Assets/logo.jpg"),
-                                                new ImageTest("#TAG4", ".Assets/logo.jpg"),
-                                                new ImageTest("#TAG5", ".Assets/logo.jpg"),
-                                                new ImageTest("#TAG6", ".Assets/logo.jpg"),
-                                                new ImageTest("#TAG7", ".Assets/logo.jpg"),
-                                                new ImageTest("#TAG8", ".Assets/logo.jpg"),
-                                                new ImageTest("#TAG9", ".Assets/logo.jpg")
-                                              };
-            //if (images.Count > 0)
-            //   ListViewImages.ItemsSource = images;
-            for (int i = 0; i < Images.Count; i++)
+            LoadLogo();
+
+            var Images = new List<ImageTest>();
+
+            for (int i = 0; i < 10; i++)
             {
                 ListViewImages.Items.Add(new ImageTest($"#TAG{i}", @"C:/REPOZYTORIA/IO prj/MyTag/Assets/test.jpg"));
             }
-            //foreach (var item in Images)
-            //{
-            //    ListViewImages.Items.Add(new ImageTest("#TAG123", "C:/REPOZYTORIA/IO prj/MyTag/Assets/test.jpg"));
-            //}
+
+
             var selItem = ListViewImages.SelectedItem;
 
             if (selItem != null)
@@ -61,6 +51,13 @@ namespace MyTag
             }
 
         }
+
+        private void LoadLogo()
+        {
+            string LogoPath = System.IO.Path.Combine(Directory.GetParent(System.IO.Directory.GetCurrentDirectory()).Parent.Parent.FullName) + @"\Assets\logo.jpg";
+            Image_Logo.Source = new BitmapImage(new Uri(LogoPath));
+        }
+
         private void LB_SelImgae(object sender, SelectionChangedEventArgs e)
         {
 
