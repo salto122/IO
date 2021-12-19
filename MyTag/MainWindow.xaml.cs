@@ -59,7 +59,7 @@ namespace MyTag
             string TestImagePath = System.IO.Path.Combine(Directory.GetParent(System.IO.Directory.GetCurrentDirectory()).Parent.Parent.FullName) + @"\Assets\test.jpg";
             for (int i = 0; i < 10; i++)
             {
-                ListViewImages.Items.Add(new ImageTest($"#TAG{i}", TestImagePath));
+                ListViewImages.Items.Add(new ImageTest($"#TAG{i}", TestImagePath, "IDCS_" +DateTime.Now.ToString()));
             }
 
         }
@@ -72,6 +72,7 @@ namespace MyTag
             {
                 TB_TagList.Text = ((ImageTest)item.SelectedItem).Tag;
                 LB_Resolution.Content = "Resolution: " + ((ImageTest)item.SelectedItem).ResX.ToString() +" x "+ ((ImageTest)item.SelectedItem).ResY.ToString();
+                LB_ImageName.Content = ((ImageTest)item.SelectedItem).IDCS.ToString();
             }
             if (ListViewImages.SelectedItem == null)
                 TB_TagList.Text = string.Empty;
@@ -152,13 +153,16 @@ namespace MyTag
             public int ResX { get; set; }
             public int ResY { get; set; }
 
-            public ImageTest(string tag, string imagePath)
+            public string IDCS { get; set; }
+
+            public ImageTest(string tag, string imagePath, string idcs)
             {
                 Tag = tag;
                 ImagePath = imagePath;
                 Image = new BitmapImage(new Uri(imagePath, UriKind.Relative));
                 ResX = Image.PixelWidth;
                 ResY = Image.PixelHeight;
+                IDCS = idcs;
 
             }
 
