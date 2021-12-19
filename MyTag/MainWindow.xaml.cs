@@ -33,22 +33,7 @@ namespace MyTag
 
             LoadLogo();
 
-            var Images = new List<ImageTest>();
-
-            for (int i = 0; i < 10; i++)
-            {
-                ListViewImages.Items.Add(new ImageTest($"#TAG{i}", @"C:/REPOZYTORIA/IO prj/MyTag/Assets/test.jpg"));
-            }
-
-
-            var selItem = ListViewImages.SelectedItem;
-
-            if (selItem != null)
-            {
-                var TEST = (ImageTest)selItem;
-                TB_TagList.Text = TEST.Tag.ToString();
-            }
-
+            ImageTestLoad();
 
         }
 
@@ -59,7 +44,24 @@ namespace MyTag
 
         }
 
+        public void ImageTestLoad()
+        {
+            var selItem = ListViewImages.SelectedItem;
 
+            if (selItem != null)
+            {
+                var TEST = (ImageTest)selItem;
+                TB_TagList.Text = TEST.Tag.ToString();
+            }
+
+            var Images = new List<ImageTest>();
+            string TestImagePath = System.IO.Path.Combine(Directory.GetParent(System.IO.Directory.GetCurrentDirectory()).Parent.Parent.FullName) + @"\Assets\test.jpg";
+            for (int i = 0; i < 10; i++)
+            {
+                ListViewImages.Items.Add(new ImageTest($"#TAG{i}", TestImagePath));
+            }
+
+        }
 
         private void LB_SelImgae(object sender, SelectionChangedEventArgs e)
         {
@@ -151,6 +153,9 @@ namespace MyTag
                 Image = new BitmapImage(new Uri(imagePath, UriKind.Relative));
 
             }
+
+
+
         }
 
 
