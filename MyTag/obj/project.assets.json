@@ -389,23 +389,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\szpaw\\.nuget\\packages\\": {}
+    "C:\\Users\\salto\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\szpaw\\Source\\Repos\\IO\\MyTag\\MyTag.csproj",
+      "projectUniqueName": "C:\\Users\\salto\\RiderProjects\\MyTag\\MyTag\\MyTag.csproj",
       "projectName": "MyTag",
-      "projectPath": "C:\\Users\\szpaw\\Source\\Repos\\IO\\MyTag\\MyTag.csproj",
-      "packagesPath": "C:\\Users\\szpaw\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\szpaw\\Source\\Repos\\IO\\MyTag\\obj\\",
+      "projectPath": "C:\\Users\\salto\\RiderProjects\\MyTag\\MyTag\\MyTag.csproj",
+      "packagesPath": "C:\\Users\\salto\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\salto\\RiderProjects\\MyTag\\MyTag\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\szpaw\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\salto\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
-        "net5.0-windows7.0"
+        "net5.0-windows"
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
@@ -450,7 +450,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.404\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
       }
     }
   }
