@@ -42,7 +42,7 @@ namespace MyTag
             string LogoPath = System.IO.Path.Combine(Directory.GetParent(System.IO.Directory.GetCurrentDirectory()).Parent.Parent.FullName) + @"\Assets\logo.jpg";
             Image_Logo.Source = new BitmapImage(new Uri(LogoPath));
 
-            
+
         }
 
         public void ImageTestLoad()
@@ -59,7 +59,7 @@ namespace MyTag
             string TestImagePath = System.IO.Path.Combine(Directory.GetParent(System.IO.Directory.GetCurrentDirectory()).Parent.Parent.FullName) + @"\Assets\test.jpg";
             for (int i = 0; i < 10; i++)
             {
-                ListViewImages.Items.Add(new ImageTest($"#TAG{i}", TestImagePath, "IDCS_" +DateTime.Now.ToString()));
+                ListViewImages.Items.Add(new ImageTest($"#TAG{i}", TestImagePath, "IDCS_" + DateTime.Now.ToString()));
             }
 
         }
@@ -71,7 +71,7 @@ namespace MyTag
             if (ListViewImages.SelectedItem != null)
             {
                 TB_TagList.Text = ((ImageTest)item.SelectedItem).Tag;
-                LB_Resolution.Content = "Resolution: " + ((ImageTest)item.SelectedItem).ResX.ToString() +" x "+ ((ImageTest)item.SelectedItem).ResY.ToString();
+                LB_Resolution.Content = "Resolution: " + ((ImageTest)item.SelectedItem).ResX.ToString() + " x " + ((ImageTest)item.SelectedItem).ResY.ToString();
                 LB_ImageName.Content = ((ImageTest)item.SelectedItem).IDCS.ToString();
             }
             if (ListViewImages.SelectedItem == null)
@@ -163,7 +163,6 @@ namespace MyTag
                 ResX = Image.PixelWidth;
                 ResY = Image.PixelHeight;
                 IDCS = idcs;
-
             }
 
 
