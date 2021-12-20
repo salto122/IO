@@ -40,10 +40,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <None Include="Picture.cs" />
-    </ItemGroup>
-
-    <ItemGroup>
       <PackageReference Include="MongoDB.Driver" Version="2.14.1" />
     </ItemGroup>
 
@@ -54,6 +50,10 @@
       <Resource Include="Assets\magnifyingGlass.png">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </Resource>
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Backend\Backend.csproj" />
     </ItemGroup>
 
 </Project>

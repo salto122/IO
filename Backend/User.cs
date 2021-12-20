@@ -1,7 +1,6 @@
-﻿using System.Runtime.CompilerServices;
-using MyTag.Database;
+﻿using Backend.Database.Models;
 
-namespace MyTag
+namespace Backend
 {
     public class User
     {

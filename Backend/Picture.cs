@@ -1,7 +1,7 @@
 ﻿using System.IO;
-using MyTag.Database;
+using Backend.Database;
 
-namespace MyTag
+namespace Backend
 {
     public class Picture
     {
@@ -30,7 +30,7 @@ namespace MyTag
         
         private void CopyPicture()
         {
-            this._dbName = _db.InsertOnePicture("table_name", new PictureModel(_name, "tags"));
+            //this._dbName = _db.InsertOnePicture("table_name", new PictureModel(_name, "tags"));
             File.Copy(currentPath, FileLocation + this._dbName);
         }
     }

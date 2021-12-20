@@ -2,7 +2,7 @@
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
-namespace MyTag.Database
+namespace Backend.Database.Models
 {
     public class PictureModel
     {

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using MyTag.Database;
+using Backend.Database;
 
-namespace MyTag
+namespace Backend
 {
     public class Tags
     {

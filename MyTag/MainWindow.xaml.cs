@@ -41,8 +41,6 @@ namespace MyTag
         {
             string LogoPath = System.IO.Path.Combine(Directory.GetParent(System.IO.Directory.GetCurrentDirectory()).Parent.Parent.FullName) + @"\Assets\logo.jpg";
             Image_Logo.Source = new BitmapImage(new Uri(LogoPath));
-
-
         }
 
         public void ImageTestLoad()

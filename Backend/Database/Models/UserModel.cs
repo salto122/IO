@@ -3,7 +3,7 @@ using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 using System;
 
-namespace MyTag.Database
+namespace Backend.Database.Models
 {
     public class UserModel
     {

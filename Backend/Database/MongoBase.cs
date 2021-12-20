@@ -6,8 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System;
+using Backend.Database.Models;
 
-namespace MyTag.Database
+namespace Backend.Database
 {
     public class MongoBase
     {
