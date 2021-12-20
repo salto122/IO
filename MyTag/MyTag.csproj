@@ -11,7 +11,8 @@
     </ItemGroup>
 
     <ItemGroup>
-      <None Remove="magnifyingGlass.png" />
+      <None Remove="Assets\logo.jpg" />
+      <None Remove="Assets\magnifyingGlass.png" />
     </ItemGroup>
 
     <ItemGroup>
@@ -39,10 +40,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Assets\" />
-    </ItemGroup>
-
-    <ItemGroup>
       <None Include="Picture.cs" />
     </ItemGroup>
 
@@ -51,7 +48,12 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Resource Include="magnifyingGlass.png" />
+      <Resource Include="Assets\logo.jpg">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Resource>
+      <Resource Include="Assets\magnifyingGlass.png">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Resource>
     </ItemGroup>
 
 </Project>

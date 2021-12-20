@@ -43,9 +43,9 @@
                     <Grid>
                         <Grid.ColumnDefinitions></Grid.ColumnDefinitions>
                         <TextBox x:Name="TB_Search" Padding="5,3,0,0" Grid.Column="0" KeyDown="TB_PressEnter"></TextBox>
-                        <Button x:Name="BT_Search"  HorizontalAlignment="Right" Width="25" Click="BT_Search_Click" >
+                        <Button x:Name="BT_Search"  HorizontalAlignment="Right" Width="25" Click="BT_Search_Click" Background="{x:Null}">
                             <StackPanel VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
-                                <Image Source="/magnifyingGlass.png" VerticalAlignment="Stretch"></Image>
+                                <Image x:Name="ImgS" VerticalAlignment="Stretch" Source="Assets/magnifyingGlass.png" />
                             </StackPanel>
                         </Button>
                     </Grid>
