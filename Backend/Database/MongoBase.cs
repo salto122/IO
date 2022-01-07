@@ -20,10 +20,27 @@ namespace Backend.Database
             db = client.GetDatabase(databaseName);
         }
 
-        public void InsertOneUser(string table, UserModel record)
+        public bool InsertOneUser(string table, UserModel record)
         {
+            bool exists = false;
             var collection = db.GetCollection<UserModel>(table);
-            collection.InsertOne(record);
+
+            var filter = Builders<UserModel>.Filter.Eq("Username", record.Username);
+            
+            var user = collection.Find(filter).FirstOrDefault();
+
+            if (user != null && record.Username == user.Username)
+            {
+                    Console.WriteLine("User already exists.");
+                exists = true;
+                return exists;
+            }
+            else
+            {
+                collection.InsertOne(record);
+                return exists;
+            }
+            
         }
 
         public void DeleteOneUser(string table, ObjectId id)

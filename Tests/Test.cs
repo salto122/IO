@@ -1,5 +1,6 @@
 using Backend;
 using Backend.Database;
+using Backend.Database.Models;
 using MongoDB.Bson;
 using NUnit.Framework;
 
@@ -13,7 +14,11 @@ namespace Tests
         [TestCase]
         public void DoesAddValueWork()
         {
-            Assert.AreEqual(new ObjectId("000000000000000000000000"), dbTest.InsertOnePicture("pictures", new Backend.Database.Models.PictureModel("empty", "")));
+            Assert.AreEqual(new ObjectId("000000000000000000000000"), dbTest.InsertOnePicture("pictures", new PictureModel("empty", "")));
+
+            var user = dbTest.InsertOneUser("users", new UserModel("Anny", ""));
+
+
         }
     }
 }
