@@ -37,8 +37,14 @@ namespace Backend.Database
         {
             record.AddedDate = DateTime.Now;
             var collection = db.GetCollection<PictureModel>(table);
-            collection.InsertOne(record);
 
+            if (String.IsNullOrWhiteSpace(record.Tags))
+            {
+                Console.WriteLine("Picture don't have tags.");
+                return new ObjectId("000000000000000000000000");
+            }
+
+            collection.InsertOne(record);
             return record.Id; // returns ObjectId
         }
 
