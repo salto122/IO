@@ -13,7 +13,7 @@ namespace Backend
         
         public Picture()
         {
-            _db = new MongoBase("myDb");
+            _db = new MongoBase("MyTag");
         }        
         
         public Picture(string dbName) : this()
@@ -28,10 +28,15 @@ namespace Backend
             CopyPicture();
         }        
         
-        private void CopyPicture()
+        public void CopyPicture()
         {
             //this._dbName = _db.InsertOnePicture("table_name", new PictureModel(_name, "tags"));
-            File.Copy(currentPath, FileLocation + this._dbName);
+            //File.Copy(currentPath, FileLocation + this._dbName);
+
+            var rec = _db.LoadOnePicture("pictures", new MongoDB.Bson.ObjectId("61b9fed3f61bb7bfa09d7e41"));
+
+            var test = rec.Tags.ToString();
+            System.Console.WriteLine(test);
         }
     }
 }

@@ -7,6 +7,10 @@ namespace Backend
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
+
+            Picture picture = new Picture();
+
+            picture.CopyPicture();
         }
     }
 }
