@@ -12,13 +12,18 @@ namespace Tests
         private MongoBase dbTest = new MongoBase(MongoConnection.DatabaseName);
 
         [TestCase]
-        public void DoesAddValueWork()
+        public void DoesPictureHaveTags()
         {
             Assert.AreEqual(new ObjectId("000000000000000000000000"), dbTest.InsertOnePicture("pictures", new PictureModel("empty", "")));
-
-            var user = dbTest.InsertOneUser("users", new UserModel("Anny", ""));
-
-
         }
+
+        [TestCase]
+        public void DoesUserExists()
+        {
+            var user = dbTest.InsertOneUser("users", new UserModel("Anny", ""));
+            Assert.IsTrue(user);
+        }
+
+
     }
 }
