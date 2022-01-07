@@ -34,6 +34,8 @@ namespace Backend
             //File.Copy(currentPath, FileLocation + this._dbName);
 
             var rec = _db.LoadOnePicture("pictures", new MongoDB.Bson.ObjectId("61b9fed3f61bb7bfa09d7e41"));
+            rec.Tags = "#doge, #car, #cute";
+            _db.UpsertOnePicture("pictures", rec.Id, rec);
 
             var test = rec.Tags.ToString();
             System.Console.WriteLine(test);
