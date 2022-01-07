@@ -12,7 +12,7 @@ namespace Backend.Database
 {
     public class MongoBase
     {
-        IMongoDatabase db;
+        public IMongoDatabase db;
 
         public MongoBase(string databaseName)
         {
@@ -82,6 +82,7 @@ namespace Backend.Database
         {
             var collection = db.GetCollection<PictureModel>(table);
             var filter = Builders<PictureModel>.Filter.Eq("_id", id);
+
             collection.DeleteOne(filter);
         }
 
