@@ -27,7 +27,7 @@ namespace Backend.Database
 
             var filter = Builders<UserModel>.Filter.Eq("Username", record.Username);
 
-            var user = collection.Find(filter).FirstOrDefault();
+            var user = collection.Find(filter).First();
 
             if (user != null && record.Username == user.Username)
             {
@@ -80,6 +80,7 @@ namespace Backend.Database
 
         public void DeleteOnePicture(string table, ObjectId id)
         {
+
             var collection = db.GetCollection<PictureModel>(table);
             var filter = Builders<PictureModel>.Filter.Eq("_id", id);
 

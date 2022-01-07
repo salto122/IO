@@ -43,7 +43,7 @@ namespace Backend
             //var test = rec.Tags.ToString();
             //System.Console.WriteLine(test);
 
-            _db.InsertOneUser("users", new Database.Models.UserModel("Anny", ""));
+            //_db.InsertOneUser("users", new Database.Models.UserModel("Anny", ""));
         }
     }
 }

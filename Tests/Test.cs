@@ -26,16 +26,16 @@ namespace Tests
             Assert.IsTrue(user);
         }
         [TestCase]
-        public void DidPictureGotDeleted()
+        public void DoesDeleteOnePictureWork()
         {
-            ObjectId objectId = new ObjectId("61d882281218c7afcf9d9995");
+            ObjectId objectId = new ObjectId("61b9fed3f61bb7bfa09d7e41");
+
+            dbTest.DeleteOnePicture("pictures", objectId);
 
             var collection = dbTest.db.GetCollection<PictureModel>("pictures");
             var filter = Builders<PictureModel>.Filter.Eq("_id", objectId);
 
-            var test = collection.Find(filter).FirstOrDefault();
-            
-            Assert.IsTrue(test.Id == objectId);
+            Assert.IsNull(collection.Find(filter).FirstOrDefault());
         }
     }
 }

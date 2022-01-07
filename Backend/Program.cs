@@ -11,6 +11,7 @@ namespace Backend
             Picture picture = new Picture();
 
             picture.CopyPicture();
+           
         }
     }
 }
