@@ -39,20 +39,20 @@ namespace MyTag
             }
             else
             {
-                MessageBox.Show(string.Format("{0} Directory does not exist!", folderPath));
+                MessageBox.Show(string.Format("{0} directory does not exist!", folderPath));
             }
         }
 
 
         private void CM_BT_Open(object sender, RoutedEventArgs e)
         {
-            
+
             string filePath = ((ImageTest)SelectedItemT.SelectedItem).ImagePath;
             if (File.Exists(filePath))
                 Process.Start("explorer.exe", filePath);
             else
             {
-                MessageBox.Show(string.Format("{0} File does not exist!", filePath));
+                MessageBox.Show(string.Format("{0} file does not exist!", filePath));
             }
         }
         private void CM_BT_ModifyTags(object sender, RoutedEventArgs e)
@@ -73,8 +73,27 @@ namespace MyTag
         }
         private void CM_BT_SaveOnDesktop(object sender, RoutedEventArgs e)
         {
+            string filePath = ((ImageTest)SelectedItemT.SelectedItem).ImagePath;
+            string fileName = System.IO.Path.GetFileName(filePath);
+            string desktopPath = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), fileName);
+            if (File.Exists(filePath))
+            {
+                if (!File.Exists(desktopPath))
+                {
+                    File.Copy(filePath, desktopPath);
+                }
+                else
+                {
+                    MessageBox.Show(string.Format("{0} file already exist!", fileName));
+                }
+            }
+            else
+            {
+                MessageBox.Show(string.Format("{0} file does not exist!", fileName));
+            }
 
         }
+
         private void CM_BT_Delete(object sender, RoutedEventArgs e)
         {
 
