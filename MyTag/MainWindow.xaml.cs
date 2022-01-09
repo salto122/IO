@@ -71,7 +71,8 @@ namespace MyTag
                 TB_TagList.Text = ((ImageTest)item.SelectedItem).Tag;
                 LB_Resolution.Content = "Resolution: " + ((ImageTest)item.SelectedItem).ResX.ToString() + " x " + ((ImageTest)item.SelectedItem).ResY.ToString();
                 LB_ImageName.Content = ((ImageTest)item.SelectedItem).IDCS.ToString();
-                LB_AddDate.Content = "Date Added: " + GetCreateDate(((ImageTest)item.SelectedItem));
+                LB_CreateDate.Content = "Create Date: " + GetCreateDate((ImageTest)item.SelectedItem);
+                LB_ImageSize.Content = "Size: " + GetFileSize((ImageTest)item.SelectedItem) +" KB";
             }
             if (ListViewImages.SelectedItem == null)
                 TB_TagList.Text = string.Empty;
@@ -169,6 +170,12 @@ namespace MyTag
         {
             DateTime CreateDate = File.GetCreationTime(image.ImagePath);
             return CreateDate;
+        }
+
+        public string GetFileSize(ImageTest image)
+        {
+            double size = Math.Round(new FileInfo(image.ImagePath).Length/1024.0,2);
+            return size.ToString();
         }
     }
 }
