@@ -27,6 +27,8 @@ namespace MyTag
 
     public partial class MainWindow : Window
     {
+        private static ListBox SelectedItemT;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -35,6 +37,7 @@ namespace MyTag
 
             ImageTestLoad();
 
+            
         }
 
         private void LoadLogo()
@@ -68,6 +71,7 @@ namespace MyTag
             var item = (ListBox)sender;
             if (ListViewImages.SelectedItem != null)
             {
+                SelectedItemT = item;
                 TB_TagList.Text = ((ImageTest)item.SelectedItem).Tag;
                 LB_Resolution.Content = "Resolution: " + ((ImageTest)item.SelectedItem).ResX.ToString() + " x " + ((ImageTest)item.SelectedItem).ResY.ToString();
                 LB_ImageName.Content = ((ImageTest)item.SelectedItem).IDCS.ToString();

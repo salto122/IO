@@ -13,17 +13,36 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.IO;
+using System.Diagnostics;
 
 
 namespace MyTag
 {
-    public partial class MainWindow 
+    public partial class MainWindow
     {
 
         private void CM_BT_OpenLocation(object sender, RoutedEventArgs e)
         {
+            string filePath = ((ImageTest)SelectedItemT.SelectedItem).ImagePath;
+            string folderPath = Directory.GetParent(filePath).ToString();
 
+            if (Directory.Exists(folderPath))
+            {
+                ProcessStartInfo startInfo = new ProcessStartInfo
+                {
+                    Arguments = "/select, " + filePath,
+                    FileName = "explorer.exe"
+                };
+
+                Process.Start(startInfo);
+            }
+            else
+            {
+                MessageBox.Show(string.Format("{0} Directory does not exist!", folderPath));
+            }
         }
+
 
         private void CM_BT_Open(object sender, RoutedEventArgs e)
         {
