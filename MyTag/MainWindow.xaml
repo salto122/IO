@@ -37,7 +37,7 @@
 
 
 
-        <TextBox  Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3"  HorizontalAlignment="Stretch" TextAlignment="Left" Margin="70,15,200,40" MaxLength="30" Height="25">
+        <TextBox x:Name="TB_SerachBox" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3"  HorizontalAlignment="Stretch" TextAlignment="Left" Margin="70,15,200,40" MaxLength="30" Height="25">
             <TextBox.Template>
                 <ControlTemplate>
                     <Grid>
@@ -103,7 +103,8 @@
             <Label  x:Name="LB_ImageName" Content="Name:" />
             <Label  x:Name="LB_Resolution" Content="Resolution: "/>
             <Label  x:Name="LB_ImageSize" Content="Size: "/>
-            <Label  x:Name="LB_AddDate" Content="Date Added: "/>
+            <Label  x:Name="LB_CreateDate" Content="Create Date: "/>
+            <Label  x:Name="LB_AddDate" Content="Add Date: "/>
             <TextBox x:Name="TB_TagList" Height="100" />
         </StackPanel>
     </Grid>

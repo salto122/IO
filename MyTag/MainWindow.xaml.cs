@@ -71,6 +71,7 @@ namespace MyTag
                 TB_TagList.Text = ((ImageTest)item.SelectedItem).Tag;
                 LB_Resolution.Content = "Resolution: " + ((ImageTest)item.SelectedItem).ResX.ToString() + " x " + ((ImageTest)item.SelectedItem).ResY.ToString();
                 LB_ImageName.Content = ((ImageTest)item.SelectedItem).IDCS.ToString();
+                LB_AddDate.Content = "Date Added: " + GetCreateDate(((ImageTest)item.SelectedItem));
             }
             if (ListViewImages.SelectedItem == null)
                 TB_TagList.Text = string.Empty;
@@ -150,6 +151,7 @@ namespace MyTag
             public BitmapImage Image { get; set; }
             public int ResX { get; set; }
             public int ResY { get; set; }
+            public DateTime DateAdd { get; set; }
 
             public string IDCS { get; set; }
 
@@ -162,11 +164,11 @@ namespace MyTag
                 ResY = Image.PixelHeight;
                 IDCS = idcs;
             }
-
-
-
         }
-
-
+        public DateTime GetCreateDate(ImageTest image)
+        {
+            DateTime CreateDate = File.GetCreationTime(image.ImagePath);
+            return CreateDate;
+        }
     }
 }
