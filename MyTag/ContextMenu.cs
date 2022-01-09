@@ -46,7 +46,14 @@ namespace MyTag
 
         private void CM_BT_Open(object sender, RoutedEventArgs e)
         {
-
+            
+            string filePath = ((ImageTest)SelectedItemT.SelectedItem).ImagePath;
+            if (File.Exists(filePath))
+                Process.Start("explorer.exe", filePath);
+            else
+            {
+                MessageBox.Show(string.Format("{0} File does not exist!", filePath));
+            }
         }
         private void CM_BT_ModifyTags(object sender, RoutedEventArgs e)
         {
