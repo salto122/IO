@@ -45,53 +45,19 @@ namespace MyTag
 
         public void ImageTestLoad()
         {
-            //var selItem = ListViewImages.SelectedItem;
+            var selItem = ListViewImages.SelectedItem;
 
-            //if (selItem != null)
-            //{
-            //    var TEST = (ImageTest)selItem;
-            //    TB_TagList.Text = TEST.Tag.ToString();
-            //}
-
-            //var Images = new List<ImageTest>();
-            //string TestImagePath = System.IO.Path.Combine(Directory.GetParent(System.IO.Directory.GetCurrentDirectory()).Parent.Parent.FullName) + @"\Assets\test.jpg";
-            //for (int i = 0; i < 10; i++)
-            //{
-            //    ListViewImages.Items.Add(new ImageTest($"#TAG{i}", TestImagePath, "IDCS_" + DateTime.Now.ToString()));
-            //}
-
-            string folder_Path = @"C:\Users\szpaw\Desktop\testowanie";
-
-            if (folder_Path == "")
+            if (selItem != null)
             {
-                return;
+                var TEST = (ImageTest)selItem;
+                TB_TagList.Text = TEST.Tag.ToString();
             }
 
-
-            DirectoryInfo folder = new DirectoryInfo(folder_Path);
-            if (folder.Exists)
+            var Images = new List<ImageTest>();
+            string TestImagePath = System.IO.Path.Combine(Directory.GetParent(System.IO.Directory.GetCurrentDirectory()).Parent.Parent.FullName) + @"\Assets\test.jpg";
+            for (int i = 0; i < 10; i++)
             {
-                foreach (FileInfo fileInfo in folder.GetFiles())
-                {
-                    if (".jpg|.jpeg|.png".Contains(fileInfo.Extension.ToLower()))
-                    {
-                        string sDate = fileInfo.LastWriteTime.ToString("yyyy-MMy-dd");
-                        Add_Image(fileInfo.FullName);
-                    }
-                }
-            }
-
-            void Add_Image(string Image_with_Path)
-            {
-                Image newImage = new Image();
-
-                BitmapImage src = new BitmapImage();
-                src.BeginInit();
-                src.UriSource = new Uri(Image_with_Path, UriKind.Absolute);
-                src.EndInit();
-                newImage.Source = src;
-
-                ListViewImages.Items.Add(newImage);
+                ListViewImages.Items.Add(new ImageTest($"#TAG{i}", TestImagePath, "IDCS_" + DateTime.Now.ToString()));
             }
         }
 
