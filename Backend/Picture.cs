@@ -33,9 +33,6 @@ namespace Backend
         
         public string PushPictureDataIntoDB()
         {
-            //this._dbName = _db.InsertOnePicture("table_name", new PictureModel(_name, "tags"));
-            //File.Copy(currentPath, FileLocation + this._dbName);
-
             ObjectId objectid = _db.InsertOnePicture("PictureData", new Database.Models.PictureModel(_name, tags));
             return objectid.ToString();
             
