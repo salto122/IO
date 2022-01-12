@@ -15,7 +15,7 @@ namespace Backend
 
         public void AddUser(string username)
         {
-            
+            _db.InsertOneUser("Users", new UserModel(username, ""));
         }
 
         public string GetUserName()
