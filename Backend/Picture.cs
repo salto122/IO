@@ -33,17 +33,17 @@ namespace Backend
             //this._dbName = _db.InsertOnePicture("table_name", new PictureModel(_name, "tags"));
             //File.Copy(currentPath, FileLocation + this._dbName);
 
-            var objectid = _db.InsertOnePicture("pictures", new Database.Models.PictureModel("not empty", "#notempty"));
-            System.Console.WriteLine(objectid.ToString());
+            //var objectid = _db.InsertOnePicture("pictures", new Database.Models.PictureModel("not empty", "#notempty"));
+            //System.Console.WriteLine(objectid.ToString());
 
-            var rec = _db.LoadOnePicture("pictures", new MongoDB.Bson.ObjectId("61b9fed3f61bb7bfa09d7e41"));
-            rec.Tags = "#doge, #car, #cute";
-            _db.UpsertOnePicture("pictures", rec.Id, rec);
+            //var rec = _db.LoadOnePicture("pictures", new MongoDB.Bson.ObjectId("61b9fed3f61bb7bfa09d7e41"));
+            //rec.Tags = "#doge, #car, #cute";
+            //_db.UpsertOnePicture("pictures", rec.Id, rec);
 
-            var test = rec.Tags.ToString();
-            System.Console.WriteLine(test);
+            //var test = rec.Tags.ToString();
+            //System.Console.WriteLine(test);
 
-            _db.InsertOneUser("users", new Database.Models.UserModel("Anny", ""));
+            //_db.InsertOneUser("users", new Database.Models.UserModel("Anny", ""));
         }
     }
 }
