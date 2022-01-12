@@ -29,7 +29,12 @@ namespace Backend
             this.currentPath = currentPath;
             this.tags = tags;
             CopyPicture();
-        }        
+        }
+
+        public void CopyFileToDesLocation()
+        {
+            File.Copy(currentPath, FileLocation + this._dbName);
+        }
         
         public string PushPictureDataIntoDB()
         {
