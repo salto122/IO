@@ -30,7 +30,7 @@ namespace Backend
             CopyPicture();
         }        
         
-        public void CopyPicture()
+        public void PushPictureDataIntoDB()
         {
             //this._dbName = _db.InsertOnePicture("table_name", new PictureModel(_name, "tags"));
             //File.Copy(currentPath, FileLocation + this._dbName);
