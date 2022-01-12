@@ -31,7 +31,7 @@ namespace Backend.Database
 
             if (user != null && record.Username == user.Username)
             {
-                Console.WriteLine("User already exists.");
+                Console.WriteLine("User with that username already exists.");
                 exists = true;
                 return exists;
             }

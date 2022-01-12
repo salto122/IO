@@ -13,10 +13,12 @@ namespace Backend
             _userModel = userModel;
         }
 
-        public void AddUser(string username)
+        public bool AddUser(string username)
         {
-            _db.InsertOneUser("Users", new UserModel(username, ""));
+            return _db.InsertOneUser("Users", new UserModel(username, "")); // returns bool to check if that username exists
         }
+
+        
 
         public string GetUserName()
         {
