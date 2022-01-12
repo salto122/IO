@@ -22,10 +22,11 @@ namespace Backend
             this._name = dbName;
         }
 
-        public Picture(string name, string currentPath) : this()
+        public Picture(string name, string currentPath, string tags) : this()
         {
             this._name = name;
             this.currentPath = currentPath;
+            this.tags = tags;
             CopyPicture();
         }        
         
