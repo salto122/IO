@@ -1,5 +1,6 @@
 ﻿using System.IO;
 using Backend.Database;
+using MongoDB.Bson;
 
 namespace Backend
 {
@@ -30,13 +31,15 @@ namespace Backend
             CopyPicture();
         }        
         
-        public void PushPictureDataIntoDB()
+        public string PushPictureDataIntoDB()
         {
             //this._dbName = _db.InsertOnePicture("table_name", new PictureModel(_name, "tags"));
             //File.Copy(currentPath, FileLocation + this._dbName);
 
-            //var objectid = _db.InsertOnePicture("pictures", new Database.Models.PictureModel("not empty", "#notempty" ));
-            //System.Console.WriteLine(objectid.ToString());
+            ObjectId objectid = _db.InsertOnePicture("PictureData", new Database.Models.PictureModel(_name, tags));
+            return objectid.ToString();
+            
+            // System.Console.WriteLine(objectid.ToString());
 
             //var rec = _db.LoadOnePicture("pictures", new MongoDB.Bson.ObjectId("61b9fed3f61bb7bfa09d7e41"));
             //rec.Tags = "#doge, #car, #cute";
