@@ -24,7 +24,6 @@ namespace MyTag
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     /// 
-
     public partial class MainWindow : Window
     {
         public MainWindow()
@@ -34,12 +33,13 @@ namespace MyTag
             LoadLogo();
 
             ImageTestLoad();
-
         }
 
         private void LoadLogo()
         {
-            string LogoPath = System.IO.Path.Combine(Directory.GetParent(System.IO.Directory.GetCurrentDirectory()).Parent.Parent.FullName) + @"\Assets\logo.jpg";
+            string LogoPath =
+                System.IO.Path.Combine(Directory.GetParent(System.IO.Directory.GetCurrentDirectory()).Parent.Parent
+                    .FullName) + @"\Assets\logo.jpg";
             Image_Logo.Source = new BitmapImage(new Uri(LogoPath));
         }
 
@@ -49,33 +49,51 @@ namespace MyTag
 
             if (selItem != null)
             {
-                var TEST = (ImageTest)selItem;
+                var TEST = (ImageTest) selItem;
                 TB_TagList.Text = TEST.Tag.ToString();
             }
 
             var Images = new List<ImageTest>();
-            string TestImagePath = System.IO.Path.Combine(Directory.GetParent(System.IO.Directory.GetCurrentDirectory()).Parent.Parent.FullName) + @"\Assets\test.jpg";
+            string TestImagePath =
+                System.IO.Path.Combine(Directory.GetParent(System.IO.Directory.GetCurrentDirectory()).Parent.Parent
+                    .FullName) + @"\Assets\test.jpg";
             for (int i = 0; i < 10; i++)
             {
                 ListViewImages.Items.Add(new ImageTest($"#TAG{i}", TestImagePath, "IDCS_" + DateTime.Now.ToString()));
             }
+            
+            // Create two images.
+            Image image1 = Image.FromFile("c:\\FakePhoto1.jpg");
+            Image image2 = Image.FromFile("c:\\FakePhoto2.jpg");
 
+            // Get a PropertyItem from image1.
+            PropertyItem propItem = image1.GetPropertyItem(20624);
+
+            // Change the ID of the PropertyItem.
+            propItem.Id = 20625;
+
+            // Set the PropertyItem for image2.
+            image2.SetPropertyItem(propItem);
+
+            // Draw the image.
+            e.Graphics.DrawImage(image2, 20.0F, 20.0F);
         }
 
         private void LB_SelImgae(object sender, SelectionChangedEventArgs e)
         {
-
-            var item = (ListBox)sender;
+            var item = (ListBox) sender;
             if (ListViewImages.SelectedItem != null)
             {
-                TB_TagList.Text = ((ImageTest)item.SelectedItem).Tag;
-                LB_Resolution.Content = "Resolution: " + ((ImageTest)item.SelectedItem).ResX.ToString() + " x " + ((ImageTest)item.SelectedItem).ResY.ToString();
-                LB_ImageName.Content = ((ImageTest)item.SelectedItem).IDCS.ToString();
+                TB_TagList.Text = ((ImageTest) item.SelectedItem).Tag;
+                LB_Resolution.Content = "Resolution: " + ((ImageTest) item.SelectedItem).ResX.ToString() + " x " +
+                                        ((ImageTest) item.SelectedItem).ResY.ToString();
+                LB_ImageName.Content = ((ImageTest) item.SelectedItem).IDCS.ToString();
             }
+
             if (ListViewImages.SelectedItem == null)
                 TB_TagList.Text = string.Empty;
-
         }
+
         private void ListViewImages_ContextMenuOpening(object sender, ContextMenuEventArgs e)
         {
             if (ListViewImages.SelectedItem == null)
@@ -84,7 +102,6 @@ namespace MyTag
 
         private void ListViewImages_MouseDown(object sender, MouseButtonEventArgs e)
         {
-
             HitTestResult r = VisualTreeHelper.HitTest(this, e.GetPosition(this));
             if (r.VisualHit.GetType() != typeof(ListBoxItem))
             {
@@ -92,39 +109,33 @@ namespace MyTag
                 ListViewImages.SelectedItem = null;
             }
         }
+
         private void BT_ShowMyTags_CLick(object sender, RoutedEventArgs e)
         {
-
         }
 
         private void BT_AddNewTag_CLick(object sender, RoutedEventArgs e)
         {
-
         }
 
         private void BT_DeleteTag_CLick(object sender, RoutedEventArgs e)
         {
-
         }
 
         private void BT_ModifyTag_CLick(object sender, RoutedEventArgs e)
         {
-
         }
 
         private void BT_FavouriteTags_CLick(object sender, RoutedEventArgs e)
         {
-
         }
 
         private void BT_RecentImages_CLick(object sender, RoutedEventArgs e)
         {
-
         }
 
         private void BT_ImportImages_CLick(object sender, RoutedEventArgs e)
         {
-
         }
 
         private void BT_Settings_CLick(object sender, RoutedEventArgs e)
@@ -136,11 +147,10 @@ namespace MyTag
 
         private void BT_Search_Click(object sender, RoutedEventArgs e)
         {
-
         }
+
         private void TB_PressEnter(object sender, RoutedEventArgs e)
         {
-
         }
 
         public partial class ImageTest
@@ -162,11 +172,6 @@ namespace MyTag
                 ResY = Image.PixelHeight;
                 IDCS = idcs;
             }
-
-
-
         }
-
-
     }
 }
