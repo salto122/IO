@@ -10,6 +10,7 @@ namespace Backend
         private readonly string _name;
         private string _dbName;
         private string currentPath;
+        private string tags;
         
         public Picture()
         {
