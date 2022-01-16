@@ -13,8 +13,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
-
+using System.Configuration;
+using MyTag.Properties;
 
 
 namespace MyTag.ExtraWIndows
@@ -26,12 +26,15 @@ namespace MyTag.ExtraWIndows
     {
         public enum PathType
         {
-            SaveFolderPath,
-            SearchFolderPath
+            StoreImagePath,
+            SearchImagerPath
         }
         public SettingsWindow()
         {
             InitializeComponent();
+
+            TBImageFolderPath.Text = Settings.Default.StorePath.ToString();
+            TBSerachImageFolderPath.Text = Settings.Default.SearchPath.ToString();
         }
 
         private void BT_Cancel_Click(object sender, RoutedEventArgs e)
@@ -42,16 +45,24 @@ namespace MyTag.ExtraWIndows
         private void BT_Save_Click(object sender, RoutedEventArgs e)
         {
 
+            Settings.Default.StorePath = TBImageFolderPath.Text;
+            Settings.Default.Save();
+            Settings.Default.SearchPath = TBSerachImageFolderPath.Text;
+            Settings.Default.Save();
+            Settings.Default.Upgrade();
+            MessageBox.Show("Saved Settings");
+
         }
 
         private void BT_SetSaveImagePath_Click(object sender, RoutedEventArgs e)
         {
-            SetFolderPath(PathType.SaveFolderPath);
+            SetFolderPath(PathType.StoreImagePath);
         }
 
         private void BT_SetSearchImagePath_Click(object sender, RoutedEventArgs e)
         {
-            SetFolderPath(PathType.SearchFolderPath);
+            SetFolderPath(PathType.SearchImagerPath);
+            testSetting.Content = Settings.Default.StorePath.ToString();
         }
 
         public void SetFolderPath(PathType setting)
@@ -61,14 +72,15 @@ namespace MyTag.ExtraWIndows
                 System.Windows.Forms.DialogResult result = openFolderDialog.ShowDialog();
                 switch (setting)
                 {
-                    case PathType.SaveFolderPath:
+                    case PathType.StoreImagePath:
                         TBImageFolderPath.Text = openFolderDialog.SelectedPath;
                         break;
-                    case PathType.SearchFolderPath:
+                    case PathType.SearchImagerPath:
                         TBSerachImageFolderPath.Text = openFolderDialog.SelectedPath;
                         break;
                 }
             }
         }
+        
     }
 }

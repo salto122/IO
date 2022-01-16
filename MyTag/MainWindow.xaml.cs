@@ -138,6 +138,8 @@ namespace MyTag
             SettingsWindow MySettingWindow = new SettingsWindow();
 
             MySettingWindow.ShowDialog();
+
+            
         }
 
         private void BT_Search_Click(object sender, RoutedEventArgs e)
