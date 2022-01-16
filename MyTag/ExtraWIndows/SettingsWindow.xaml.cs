@@ -50,6 +50,7 @@ namespace MyTag.ExtraWIndows
             Settings.Default.Save();
             Settings.Default.Upgrade();
             MessageBox.Show("Saved Settings");
+            
         }
 
         private void BT_SetSaveImagePath_Click(object sender, RoutedEventArgs e)

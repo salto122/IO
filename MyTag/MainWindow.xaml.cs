@@ -19,6 +19,7 @@ using System.Windows.Shapes;
 using MyTag.ExtraWIndows;
 using MyTag.Properties;
 
+
 namespace MyTag
 {
     /// <summary>
@@ -36,9 +37,9 @@ namespace MyTag
 
             LoadLogo();
 
-            ImageTestLoad();
+            ImageLoadToFront();
 
-            
+
         }
 
         private void LoadLogo()
@@ -47,7 +48,7 @@ namespace MyTag
             Image_Logo.Source = new BitmapImage(new Uri(LogoPath));
         }
 
-        public void ImageTestLoad()
+        public void ImageLoadToFront()
         {
             var selItem = ListViewImages.SelectedItem;
 
@@ -57,9 +58,12 @@ namespace MyTag
                 TB_TagList.Text = TEST.Tag.ToString();
             }
 
-           
             string imageStorePath = Settings.Default.StorePath.ToString();
-            string[] imageNames = Directory.GetFiles(imageStorePath, "*.jpg");
+            string[] imageNamesJPG = Directory.GetFiles(imageStorePath, "*.jpg");
+            string[] imageNamesPNG = Directory.GetFiles(imageStorePath, "*.png");
+
+            string[] imageNames = imageNamesJPG.Concat(imageNamesPNG).ToArray();
+            imageNamesJPG.Concat(imageNamesPNG);
             for (int i = 0; i < imageNames.Length; i++)
             {
                 ListViewImages.Items.Add(new ImageTest($"#TAG{i}", imageNames[i], "IDCS_" + DateTime.Now.ToString()));
@@ -78,7 +82,7 @@ namespace MyTag
                 LB_Resolution.Content = "Resolution: " + ((ImageTest)item.SelectedItem).ResX.ToString() + " x " + ((ImageTest)item.SelectedItem).ResY.ToString();
                 LB_ImageName.Content = ((ImageTest)item.SelectedItem).IDCS.ToString();
                 LB_CreateDate.Content = "Create Date: " + GetCreateDate((ImageTest)item.SelectedItem);
-                LB_ImageSize.Content = "Size: " + GetFileSize((ImageTest)item.SelectedItem) +" KB";
+                LB_ImageSize.Content = "Size: " + GetFileSize((ImageTest)item.SelectedItem) + " KB";
             }
             if (ListViewImages.SelectedItem == null)
                 TB_TagList.Text = string.Empty;
@@ -132,7 +136,27 @@ namespace MyTag
 
         private void BT_ImportImages_CLick(object sender, RoutedEventArgs e)
         {
+            System.Windows.Forms.OpenFileDialog openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            openFileDialog.Filter = "(*.jpg, *.png)|*.jpg;*.png";
+            string selectedImagePath;
+            string fileName;
+            if (openFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+            selectedImagePath = openFileDialog.FileName;
+            fileName = System.IO.Path.GetFileName(selectedImagePath);
+                if (!File.Exists(Settings.Default.StorePath))
+                {
+                    try
+                    {
+                        File.Copy(selectedImagePath, Settings.Default.StorePath + @"\" + fileName);
+                    }
+                    catch (Exception )
+                    {
+                        MessageBox.Show(string.Format("{0} file already exist!", fileName));
+                    }
+                }
 
+            }
         }
 
         private void BT_Settings_CLick(object sender, RoutedEventArgs e)
@@ -141,7 +165,7 @@ namespace MyTag
 
             MySettingWindow.ShowDialog();
 
-            
+
         }
 
         private void BT_Search_Click(object sender, RoutedEventArgs e)
@@ -182,7 +206,7 @@ namespace MyTag
 
         public string GetFileSize(ImageTest image)
         {
-            double size = Math.Round(new FileInfo(image.ImagePath).Length/1024.0,2);
+            double size = Math.Round(new FileInfo(image.ImagePath).Length / 1024.0, 2);
             return size.ToString();
         }
     }
