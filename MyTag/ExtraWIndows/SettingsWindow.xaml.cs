@@ -24,6 +24,11 @@ namespace MyTag.ExtraWIndows
     /// </summary>
     public partial class SettingsWindow : Window
     {
+        public enum PathType
+        {
+            SaveFolderPath,
+            SearchFolderPath
+        }
         public SettingsWindow()
         {
             InitializeComponent();
@@ -41,10 +46,28 @@ namespace MyTag.ExtraWIndows
 
         private void BT_SetSaveImagePath_Click(object sender, RoutedEventArgs e)
         {
-            using (var openFileDialog = new System.Windows.Forms.FolderBrowserDialog())
+            SetFolderPath(PathType.SaveFolderPath);
+        }
+
+        private void BT_SetSearchImagePath_Click(object sender, RoutedEventArgs e)
+        {
+            SetFolderPath(PathType.SearchFolderPath);
+        }
+
+        public void SetFolderPath(PathType setting)
+        {
+            using (var openFolderDialog = new System.Windows.Forms.FolderBrowserDialog())
             {
-                System.Windows.Forms.DialogResult result = openFileDialog.ShowDialog();
-                TBImageFolderPath.Text = openFileDialog.SelectedPath;
+                System.Windows.Forms.DialogResult result = openFolderDialog.ShowDialog();
+                switch (setting)
+                {
+                    case PathType.SaveFolderPath:
+                        TBImageFolderPath.Text = openFolderDialog.SelectedPath;
+                        break;
+                    case PathType.SearchFolderPath:
+                        TBSerachImageFolderPath.Text = openFolderDialog.SelectedPath;
+                        break;
+                }
             }
         }
     }

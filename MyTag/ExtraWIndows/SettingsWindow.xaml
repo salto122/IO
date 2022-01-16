@@ -23,12 +23,16 @@
 
 
 
-        <Label x:Name="LB_SetImagePath" Content="Image folder path" Grid.Row="0" Margin="10,0,0,0" VerticalAlignment="Center" ></Label>
+        <Label x:Name="LB_SetImagePath" Grid.Row="0"  Content="Image folder path"  Margin="10,0,0,0" VerticalAlignment="Center" ></Label>
         <TextBox x:Name="TBImageFolderPath" Grid.Row="0" Grid.Column="1" Margin="5"></TextBox>
         <Button x:Name="BT_SetSaveImagePath" Content="Select" Grid.Row="0" Grid.Column="2" Margin="10,5,10,5" Click="BT_SetSaveImagePath_Click"></Button>
 
-        <Label x:Name="LB_Language" Content="Language" Grid.Row="1" Margin="10,0,0,0" VerticalAlignment="Center" ></Label>
-        <ComboBox Grid.Row="1" Grid.Column="1" Margin="5"></ComboBox>
+        <Label x:Name="LB_SetSearchImagePath" Grid.Row="1" Content="Image serach folder path" Margin="10,0,0,0" VerticalAlignment="Center" ></Label>
+        <TextBox x:Name="TBSerachImageFolderPath" Grid.Row="1" Grid.Column="1" Margin="5"></TextBox>
+        <Button x:Name="BT_SetSearchImagePath" Content="Select" Grid.Row="1" Grid.Column="2" Margin="10,5,10,5" Click="BT_SetSearchImagePath_Click"></Button>
+
+        <Label x:Name="LB_Language" Content="Language" Grid.Row="2" Margin="10,0,0,0" VerticalAlignment="Center" ></Label>
+        <ComboBox Grid.Row="2" Grid.Column="1" Margin="5"></ComboBox>
 
         <StackPanel Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2" VerticalAlignment="Bottom">
             <Button x:Name="BT_Save" Content="Save"  Margin="10,5,10,3" Click="BT_Save_Click"></Button>
