@@ -23,9 +23,9 @@
 
 
 
-        <Label x:Name="LB_SetImagePath" Content="Image Path" Grid.Row="0" Margin="10,0,0,0" VerticalAlignment="Center" ></Label>
-        <TextBox Grid.Row="0" Grid.Column="1" Margin="5"></TextBox>
-        <Button x:Name="BT_SetImagePath" Content="Select" Grid.Row="0" Grid.Column="2" Margin="10,5,10,5"></Button>
+        <Label x:Name="LB_SetImagePath" Content="Image folder path" Grid.Row="0" Margin="10,0,0,0" VerticalAlignment="Center" ></Label>
+        <TextBox x:Name="TBImageFolderPath" Grid.Row="0" Grid.Column="1" Margin="5"></TextBox>
+        <Button x:Name="BT_SetSaveImagePath" Content="Select" Grid.Row="0" Grid.Column="2" Margin="10,5,10,5" Click="BT_SetSaveImagePath_Click"></Button>
 
         <Label x:Name="LB_Language" Content="Language" Grid.Row="1" Margin="10,0,0,0" VerticalAlignment="Center" ></Label>
         <ComboBox Grid.Row="1" Grid.Column="1" Margin="5"></ComboBox>
