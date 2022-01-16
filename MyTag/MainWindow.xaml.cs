@@ -17,6 +17,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MyTag.ExtraWIndows;
+using MyTag.Properties;
 
 namespace MyTag
 {
@@ -56,11 +57,12 @@ namespace MyTag
                 TB_TagList.Text = TEST.Tag.ToString();
             }
 
-            var Images = new List<ImageTest>();
-            string TestImagePath = System.IO.Path.Combine(Directory.GetParent(System.IO.Directory.GetCurrentDirectory()).Parent.Parent.FullName) + @"\Assets\test.jpg";
-            for (int i = 0; i < 10; i++)
+           
+            string imageStorePath = Settings.Default.StorePath.ToString();
+            string[] imageNames = Directory.GetFiles(imageStorePath, "*.jpg");
+            for (int i = 0; i < imageNames.Length; i++)
             {
-                ListViewImages.Items.Add(new ImageTest($"#TAG{i}", TestImagePath, "IDCS_" + DateTime.Now.ToString()));
+                ListViewImages.Items.Add(new ImageTest($"#TAG{i}", imageNames[i], "IDCS_" + DateTime.Now.ToString()));
             }
 
         }

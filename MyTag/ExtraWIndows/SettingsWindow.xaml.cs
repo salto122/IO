@@ -44,14 +44,12 @@ namespace MyTag.ExtraWIndows
 
         private void BT_Save_Click(object sender, RoutedEventArgs e)
         {
-
             Settings.Default.StorePath = TBImageFolderPath.Text;
             Settings.Default.Save();
             Settings.Default.SearchPath = TBSerachImageFolderPath.Text;
             Settings.Default.Save();
             Settings.Default.Upgrade();
             MessageBox.Show("Saved Settings");
-
         }
 
         private void BT_SetSaveImagePath_Click(object sender, RoutedEventArgs e)
@@ -62,7 +60,6 @@ namespace MyTag.ExtraWIndows
         private void BT_SetSearchImagePath_Click(object sender, RoutedEventArgs e)
         {
             SetFolderPath(PathType.SearchImagerPath);
-            testSetting.Content = Settings.Default.StorePath.ToString();
         }
 
         public void SetFolderPath(PathType setting)
