@@ -1,5 +1,4 @@
-﻿using System.IO;
-using Backend.Database;
+﻿using Backend.Database;
 
 namespace Backend
 {
@@ -51,6 +50,13 @@ namespace Backend
             var objectid = _db.InsertOnePicture("Pictures", new Database.Models.PictureModel(filename, "#empty"));
 
             return objectid.ToString();
+        }
+
+        public string GetTag(string filename)
+        {
+            var record = _db.LoadOnePicture("Pictures", new MongoDB.Bson.ObjectId($"{filename}"));
+            return record.Tags;
+
         }
     }
 }

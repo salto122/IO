@@ -59,6 +59,12 @@ namespace MyTag
                 TB_TagList.Text = TEST.Tag.ToString();
             }
 
+
+            Picture picture = new Picture();
+
+
+
+
             string imageStorePath = Settings.Default.StorePath.ToString();
             string[] imageNamesJPG = Directory.GetFiles(imageStorePath, "*.jpg");
             string[] imageNamesPNG = Directory.GetFiles(imageStorePath, "*.png");
@@ -70,7 +76,8 @@ namespace MyTag
             {
                 tempNames[i] = imageNames[i].Substring(0 ,tempNames[i].Length - 4);
                 tempNames[i] = tempNames[i].Remove(0, 6);
-                ListViewImages.Items.Add(new ImageTest($"#TAG{i}", imageNames[i], "IDCS_" + DateTime.Now.ToString()));
+                
+                ListViewImages.Items.Add(new ImageTest($"{picture.GetTag(tempNames[i])}", imageNames[i], "IDCS_" + DateTime.Now.ToString()));
             }
         }
 
