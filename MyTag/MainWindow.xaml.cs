@@ -18,6 +18,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MyTag.ExtraWIndows;
 using MyTag.Properties;
+using Backend;
 
 
 namespace MyTag
@@ -143,6 +144,10 @@ namespace MyTag
             {
             selectedImagePath = openFileDialog.FileName;
             fileName = System.IO.Path.GetFileName(selectedImagePath);
+
+                Picture picture = new Picture();
+                fileName = picture.SetName(fileName) + ".jpg"; // .jpg placeholder - to fix
+
                 if (!File.Exists(Settings.Default.StorePath))
                 {
                     try
