@@ -1,19 +1,27 @@
 ﻿using Backend.Database.Models;
+using Backend.Database;
 
 namespace Backend
 {
     public class User
     {
         private readonly UserModel _userModel;
+        private readonly MongoBase _db;
 
-        public User(UserModel userModel)
+        public User()
         {
-            _userModel = userModel;
+            _db = new MongoBase(MongoConnection.DatabaseName);
         }
 
-        public void SetUserName(string username)
+
+        public bool AddUser(string username)
         {
-            _userModel.Username = username;
+            return _db.InsertOneUser("Users", new UserModel(username, "")); // returns bool to check if that username exists
+        }
+
+        public void DeleteUser(string username)
+        {
+            _db.DeleteOneUser("Users", username);
         }
 
         public string GetUserName()

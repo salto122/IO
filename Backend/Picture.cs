@@ -1,4 +1,4 @@
-﻿using System.IO;
+using System.IO;
 using Backend.Database;
 using MongoDB.Bson;
 
@@ -36,12 +36,13 @@ namespace Backend
             File.Copy(currentPath, FileLocation + this._dbName);
         }
         
-        public string PushPictureDataIntoDB()
+        public void CopyPicture()
         {
-            ObjectId objectid = _db.InsertOnePicture("PictureData", new Database.Models.PictureModel(_name, tags));
-            return objectid.ToString();
-            
-            // System.Console.WriteLine(objectid.ToString());
+            //this._dbName = _db.InsertOnePicture("table_name", new PictureModel(_name, "tags"));
+            //File.Copy(currentPath, FileLocation + this._dbName);
+
+            //var objectid = _db.InsertOnePicture("pictures", new Database.Models.PictureModel("not empty", "#notempty"));
+            //System.Console.WriteLine(objectid.ToString());
 
             //var rec = _db.LoadOnePicture("pictures", new MongoDB.Bson.ObjectId("61b9fed3f61bb7bfa09d7e41"));
             //rec.Tags = "#doge, #car, #cute";
@@ -51,6 +52,20 @@ namespace Backend
             //System.Console.WriteLine(test);
 
             //_db.InsertOneUser("users", new Database.Models.UserModel("Anny", ""));
+        }
+
+        public string SetName(string filename)
+        {
+            var objectid = _db.InsertOnePicture("Pictures", new Database.Models.PictureModel(filename, "#empty"));
+
+            return objectid.ToString();
+        }
+
+        public string GetTag(string filename)
+        {
+            var record = _db.LoadOnePicture("Pictures", new MongoDB.Bson.ObjectId($"{filename}"));
+            return record.Tags;
+
         }
     }
 }

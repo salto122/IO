@@ -4,6 +4,7 @@
         <OutputType>WinExe</OutputType>
         <TargetFramework>net5.0-windows</TargetFramework>
         <UseWPF>true</UseWPF>
+        <UseWindowsForms>true</UseWindowsForms> 
     </PropertyGroup>
 
     <ItemGroup>
@@ -25,6 +26,11 @@
         <DesignTime>True</DesignTime>
         <AutoGen>True</AutoGen>
         <DependentUpon>myLang.resx</DependentUpon>
+      </Compile>
+      <Compile Update="Properties\Settings.Designer.cs">
+        <DesignTimeSharedInput>True</DesignTimeSharedInput>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>Settings.settings</DependentUpon>
       </Compile>
     </ItemGroup>
 
@@ -54,6 +60,14 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Backend\Backend.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Update="Properties\Settings.settings">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        <Generator>SettingsSingleFileGenerator</Generator>
+        <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+      </None>
     </ItemGroup>
 
 </Project>
