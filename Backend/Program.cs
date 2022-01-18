@@ -11,7 +11,12 @@ namespace Backend
             Picture picture = new Picture();
 
             picture.CopyPicture();
-           
+
+            User user = new User();
+
+            var test = user.AddUser("Mat");
+            user.DeleteUser("Mat");
+
         }
     }
 }

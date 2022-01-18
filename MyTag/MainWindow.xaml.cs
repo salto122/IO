@@ -68,7 +68,6 @@ namespace MyTag
             {
                 ListViewImages.Items.Add(new ImageTest($"#TAG{i}", imageNames[i], "IDCS_" + DateTime.Now.ToString()));
             }
-
         }
 
         private void LB_SelImgae(object sender, SelectionChangedEventArgs e)

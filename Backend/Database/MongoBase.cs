@@ -27,11 +27,11 @@ namespace Backend.Database
 
             var filter = Builders<UserModel>.Filter.Eq("Username", record.Username);
 
-            var user = collection.Find(filter).First();
+            var user = collection.Find(filter).FirstOrDefault();
 
             if (user != null && record.Username == user.Username)
             {
-                Console.WriteLine("User already exists.");
+                Console.WriteLine("User with that username already exists.");
                 exists = true;
                 return exists;
             }
@@ -42,10 +42,10 @@ namespace Backend.Database
             }
         }
 
-        public void DeleteOneUser(string table, ObjectId id)
+        public void DeleteOneUser(string table, string username)
         {
             var collection = db.GetCollection<UserModel>(table);
-            var filter = Builders<UserModel>.Filter.Eq("_id", id);
+            var filter = Builders<UserModel>.Filter.Eq("Username", username);
             collection.DeleteOne(filter);
         }
 
