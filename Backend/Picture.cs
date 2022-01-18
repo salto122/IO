@@ -48,7 +48,6 @@ namespace Backend
 
         public string SetName(string filename)
         {
-
             var objectid = _db.InsertOnePicture("Pictures", new Database.Models.PictureModel(filename, "#empty"));
 
             return objectid.ToString();

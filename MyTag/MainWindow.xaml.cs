@@ -64,9 +64,12 @@ namespace MyTag
             string[] imageNamesPNG = Directory.GetFiles(imageStorePath, "*.png");
 
             string[] imageNames = imageNamesJPG.Concat(imageNamesPNG).ToArray();
+            string[] tempNames = imageNamesJPG.Concat(imageNamesPNG).ToArray();
             imageNamesJPG.Concat(imageNamesPNG);
             for (int i = 0; i < imageNames.Length; i++)
             {
+                tempNames[i] = imageNames[i].Substring(0 ,tempNames[i].Length - 4);
+                tempNames[i] = tempNames[i].Remove(0, 6);
                 ListViewImages.Items.Add(new ImageTest($"#TAG{i}", imageNames[i], "IDCS_" + DateTime.Now.ToString()));
             }
         }
@@ -83,6 +86,7 @@ namespace MyTag
                 LB_ImageName.Content = ((ImageTest)item.SelectedItem).IDCS.ToString();
                 LB_CreateDate.Content = "Create Date: " + GetCreateDate((ImageTest)item.SelectedItem);
                 LB_ImageSize.Content = "Size: " + GetFileSize((ImageTest)item.SelectedItem) + " KB";
+                LB_AddDate.Content = "Added date: ";
             }
             if (ListViewImages.SelectedItem == null)
                 TB_TagList.Text = string.Empty;
