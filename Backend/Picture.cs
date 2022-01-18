@@ -45,5 +45,13 @@ namespace Backend
 
             //_db.InsertOneUser("users", new Database.Models.UserModel("Anny", ""));
         }
+
+        public string SetName(string filename)
+        {
+
+            var objectid = _db.InsertOnePicture("Pictures", new Database.Models.PictureModel(filename, "#empty"));
+
+            return objectid.ToString();
+        }
     }
 }
