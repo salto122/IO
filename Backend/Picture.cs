@@ -1,4 +1,6 @@
-﻿using Backend.Database;
+using System.IO;
+using Backend.Database;
+using MongoDB.Bson;
 
 namespace Backend
 {
@@ -9,6 +11,7 @@ namespace Backend
         private readonly string _name;
         private string _dbName;
         private string currentPath;
+        private string tags;
         
         public Picture()
         {
@@ -20,12 +23,18 @@ namespace Backend
             this._name = dbName;
         }
 
-        public Picture(string name, string currentPath) : this()
+        public Picture(string name, string currentPath, string tags) : this()
         {
             this._name = name;
             this.currentPath = currentPath;
+            this.tags = tags;
             CopyPicture();
-        }        
+        }
+
+        public void CopyFileToDesLocation()
+        {
+            File.Copy(currentPath, FileLocation + this._dbName);
+        }
         
         public void CopyPicture()
         {
