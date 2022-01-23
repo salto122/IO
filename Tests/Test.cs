@@ -42,7 +42,8 @@ namespace Tests
         [TestCase]
         public void DoesUserClassMethodsWork()
         {
-            
+            User user = new User();
+            Assert.IsFalse(user.AddUser("test_user"));
         }
     }
 }
