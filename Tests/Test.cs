@@ -43,7 +43,11 @@ namespace Tests
         public void DoesUserClassMethodsWork()
         {
             User user = new User();
+            
             Assert.IsFalse(user.AddUser("test_user"));
+            Assert.IsTrue(user.AddUser("test_user"));
+            
+            user.DeleteUser("test_user");
         }
     }
 }
