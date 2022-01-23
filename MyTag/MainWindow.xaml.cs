@@ -74,8 +74,8 @@ namespace MyTag
             imageNamesJPG.Concat(imageNamesPNG);
             for (int i = 0; i < imageNames.Length; i++)
             {
-                tempNames[i] = imageNames[i].Substring(0 ,tempNames[i].Length - 4);
-                tempNames[i] = tempNames[i].Remove(0, 6);
+                tempNames[i] = System.IO.Path.GetFileName(imageNamesJPG[i]);
+                tempNames[i] = tempNames[i].Substring(0, tempNames[i].Length - 4);
                 
                 ListViewImages.Items.Add(new ImageTest($"{picture.GetTag(tempNames[i])}", imageNames[i], "IDCS_" + DateTime.Now.ToString()));
             }
