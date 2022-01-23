@@ -31,6 +31,7 @@ namespace MyTag
     public partial class MainWindow : Window
     {
         private static ListBox SelectedItemT;
+        public static string ImportedImageTags;
 
         public MainWindow()
         {
@@ -150,38 +151,48 @@ namespace MyTag
             openFileDialog.Filter = "(*.jpg, *.png)|*.jpg;*.png";
             string selectedImagePath;
             string fileName;
+
             if (openFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 selectedImagePath = openFileDialog.FileName;
                 fileName = System.IO.Path.GetFileName(selectedImagePath);
 
                 Picture picture = new Picture();
-                fileName = picture.SetName(fileName) + ".jpg"; // .jpg placeholder - to fix
+
+                AddTagWindow MyAddTagWindow = new AddTagWindow();
+                MyAddTagWindow.ShowDialog();
 
                 if (!File.Exists(Settings.Default.StorePath))
                 {
-                    try
+                    if (AddTagWindow.AddTagStatusCaneled == false)
                     {
-                        File.Copy(selectedImagePath, Settings.Default.StorePath + @"\" + fileName);
+                        try
+                        {
+                            //fileName = picture.SetName(fileName) + ".jpg"; // .jpg placeholder - to fix
+                            fileName = picture.SetNameAndTags(fileName, MainWindow.ImportedImageTags) + ".jpg";
+
+                            File.Copy(selectedImagePath, Settings.Default.StorePath + @"\" + fileName);
+                        }
+
+                        catch (Exception)
+                        {
+                            MessageBox.Show(string.Format("{0} file already exist!", fileName));
+                        }
                     }
-                    catch (Exception)
+                    else
                     {
-                        MessageBox.Show(string.Format("{0} file already exist!", fileName));
+                        AddTagWindow.AddTagStatusCaneled = false;
                     }
                 }
-
             }
             ReloadImagesInListBox();
-
+            Debug.WriteLine("AddTagStatusCaneled: " + AddTagWindow.AddTagStatusCaneled);
         }
 
         private void BT_Settings_CLick(object sender, RoutedEventArgs e)
         {
             SettingsWindow MySettingWindow = new SettingsWindow();
-
             MySettingWindow.ShowDialog();
-
-
         }
 
         private void BT_Search_Click(object sender, RoutedEventArgs e)

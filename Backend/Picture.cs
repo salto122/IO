@@ -53,6 +53,13 @@ namespace Backend
             return objectid.ToString();
         }
 
+        public string SetNameAndTags(string filename, string tags)
+        {
+            var objectid = _db.InsertOnePicture("Pictures", new Database.Models.PictureModel(filename, tags));
+
+            return objectid.ToString();
+        }
+
         public string? GetTag(string filename)
         {
             try
