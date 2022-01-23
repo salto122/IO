@@ -69,7 +69,9 @@ namespace MyTag
         }
         private void CM_BT_CopyPath(object sender, RoutedEventArgs e)
         {
-
+            string path = ((FrontendImage)SelectedItemT.SelectedItem).ImagePath;
+            Debug.WriteLine(path);
+            Clipboard.SetText(path);
         }
         private void CM_BT_SaveOnDesktop(object sender, RoutedEventArgs e)
         {
