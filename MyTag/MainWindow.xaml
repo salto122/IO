@@ -75,6 +75,7 @@
                     <MenuItem Header="{x:Static language:myLang.CM_Rotate}" Click="CM_BT_Rotate"/>
                     <MenuItem Header="{x:Static language:myLang.CM_Rename}" Click="CM_BT_Rename"/>
                     <MenuItem Header="{x:Static language:myLang.CM_CopyPath}" Click="CM_BT_CopyPath"/>
+                    <MenuItem Header="{x:Static language:myLang.CM_CopyImageCB}" Click="CM_BT_CopyImageCB"/>
                     <MenuItem Header="{x:Static language:myLang.CM_SaveOnDesktop}" Click="CM_BT_SaveOnDesktop"/>
                     <Separator/>
                     <MenuItem Header="{x:Static language:myLang.CM_Delete}" Click="CM_BT_Delete"/>

@@ -41,7 +41,6 @@ namespace MyTag
 
             ImageLoadToFront();
             
-
         }
 
         private void LoadLogo()

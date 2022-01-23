@@ -133,6 +133,15 @@ namespace MyTag.Properties.Langs {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Copy to clipboard.
+        /// </summary>
+        public static string CM_CopyImageCB {
+            get {
+                return ResourceManager.GetString("CM_CopyImageCB", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Copy path.
         /// </summary>
         public static string CM_CopyPath {

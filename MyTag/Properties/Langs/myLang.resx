@@ -141,6 +141,9 @@
   <data name="BT_ShowMyTags" xml:space="preserve">
     <value>My Tags</value>
   </data>
+  <data name="CM_CopyImageCB" xml:space="preserve">
+    <value>Copy to clipboard</value>
+  </data>
   <data name="CM_CopyPath" xml:space="preserve">
     <value>Copy path</value>
   </data>
