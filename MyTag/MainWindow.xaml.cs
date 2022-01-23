@@ -39,7 +39,7 @@ namespace MyTag
             LoadLogo();
 
             ImageLoadToFront();
-
+            
 
         }
 
@@ -70,10 +70,13 @@ namespace MyTag
             imageNamesJPG.Concat(imageNamesPNG);
             for (int i = 0; i < imageNames.Length; i++)
             {
-                tempNames[i] = System.IO.Path.GetFileName(imageNamesJPG[i]);
+                tempNames[i] = System.IO.Path.GetFileName(imageNames[i]);
                 tempNames[i] = tempNames[i].Substring(0, tempNames[i].Length - 4);
 
-                ListViewImages.Items.Add(new FrontendImage($"{picture.GetTag(tempNames[i])}", imageNames[i], "IDCS_" + DateTime.Now.ToString()));
+                if (picture.GetTag(tempNames[i]) != null)
+                {
+                    ListViewImages.Items.Add(new FrontendImage($"{picture.GetTag(tempNames[i])}", imageNames[i], "IDCS_" + DateTime.Now.ToString()));
+                }
             }
         }
 

@@ -1,4 +1,5 @@
 ﻿using Backend.Database;
+using System;
 
 namespace Backend
 {
@@ -52,10 +53,17 @@ namespace Backend
             return objectid.ToString();
         }
 
-        public string GetTag(string filename)
+        public string? GetTag(string filename)
         {
-            var record = _db.LoadOnePicture("Pictures", new MongoDB.Bson.ObjectId($"{filename}"));
-            return record.Tags;
+            try
+            {
+                var record = _db.LoadOnePicture("Pictures", new MongoDB.Bson.ObjectId($"{filename}"));
+                return record.Tags;
+            }
+            catch
+            {
+                return null;
+            }
 
         }
     }
