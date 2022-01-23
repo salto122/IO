@@ -47,6 +47,14 @@ namespace Tests
             Assert.IsTrue(user.AddUser("test_user"));
             
             user.DeleteUser("test_user");
+        }        
+        
+        [TestCase]
+        public void DoesDbReturnTags()
+        {
+            Picture picture = new Picture();
+
+            Assert.Equals("Picture", picture.GetTag("test_picture.jpg"));
         }
     }
 }
