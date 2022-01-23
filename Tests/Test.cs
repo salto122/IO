@@ -4,7 +4,6 @@ using Backend.Database.Models;
 using MongoDB.Bson;
 using MongoDB.Driver;
 using NUnit.Framework;
-using System.Linq;
 
 namespace Tests
 {
