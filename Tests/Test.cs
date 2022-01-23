@@ -25,6 +25,7 @@ namespace Tests
             var user = dbTest.InsertOneUser("users", new UserModel("Anny", ""));
             Assert.IsTrue(user);
         }
+        
         [TestCase]
         public void DoesDeleteOnePictureWork()
         {
@@ -36,6 +37,12 @@ namespace Tests
             var filter = Builders<PictureModel>.Filter.Eq("_id", objectId);
 
             Assert.IsNull(collection.Find(filter).FirstOrDefault());
+        }
+        
+        [TestCase]
+        public void DoesUserClassMethodsWork()
+        {
+            
         }
     }
 }
