@@ -13,7 +13,7 @@ namespace Backend
         
         public Picture()
         {
-            _db = new MongoBase(MongoConnection.conMethod());
+            _db = MongoBase.getDB();
         }        
         
         public Picture(string dbName) : this()

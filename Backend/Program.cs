@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Threading;
+using Backend.Database;
 
 namespace Backend
 {
@@ -6,16 +8,17 @@ namespace Backend
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            //Console.WriteLine("Hello World!");
 
-            Picture picture = new Picture();
+            //Picture picture = new Picture();
 
-            picture.CopyPicture();
+            //picture.CopyPicture();
 
-            User user = new User();
+            //User user = new User();
 
-            var test = user.AddUser("Mat");
-            user.DeleteUser("Mat");
+            //var test = user.AddUser("Mat");
+            //user.DeleteUser("Mat");
+
 
         }
     }

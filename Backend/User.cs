@@ -10,7 +10,7 @@ namespace Backend
 
         public User()
         {
-            _db = new MongoBase(MongoConnection.conMethod());
+            _db = MongoBase.getDB();
         }
 
 
