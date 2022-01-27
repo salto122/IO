@@ -14,4 +14,8 @@
       <PackageReference Include="MongoDB.Driver" Version="2.14.1" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Compile Remove="Database\MongoConnection.cs" />
+    </ItemGroup>
+
 </Project>
