@@ -30,6 +30,9 @@ namespace Backend.Database
             return instance;
         }
 
-        
+        public static string conMethod()
+        {
+            return getInstance().Value;
+        }
     }
 }
