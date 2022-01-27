@@ -12,7 +12,24 @@ namespace Backend.Database
         private static string DBname = "MyTag";
         private static MongoConnection instance;
         private static readonly object _lock = new object();
-        
 
+        private MongoConnection() { }
+        private static MongoConnection getInstance()
+        {
+            if (MongoConnection.instance == null)
+            {
+                lock (_lock)
+                {
+                    if (instance == null)
+                    {
+                        instance = new MongoConnection();
+                        instance.Value = DBname;
+                    }
+                }
+            }
+            return instance;
+        }
+
+        
     }
 }
