@@ -11,7 +11,7 @@ namespace Tests
     [TestFixture]
     public class TestClassTest
     {
-        private MongoBase dbTest = new MongoBase(MongoConnection.DatabaseName);
+        private MongoBase dbTest = MongoBase.getDB();
 
         [TestCase]
         public void DoesPictureHaveTags()

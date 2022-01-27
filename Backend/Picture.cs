@@ -1,6 +1,5 @@
-using System.IO;
-using Backend.Database;
-using MongoDB.Bson;
+﻿using Backend.Database;
+using System;
 
 namespace Backend
 {
@@ -11,11 +10,10 @@ namespace Backend
         private readonly string _name;
         private string _dbName;
         private string currentPath;
-        private string tags;
         
         public Picture()
         {
-            _db = new MongoBase(MongoConnection.DatabaseName);
+            _db = MongoBase.getDB();
         }        
         
         public Picture(string dbName) : this()
@@ -23,18 +21,12 @@ namespace Backend
             this._name = dbName;
         }
 
-        public Picture(string name, string currentPath, string tags) : this()
+        public Picture(string name, string currentPath) : this()
         {
             this._name = name;
             this.currentPath = currentPath;
-            this.tags = tags;
             CopyPicture();
-        }
-
-        public void CopyFileToDesLocation()
-        {
-            File.Copy(currentPath, FileLocation + this._dbName);
-        }
+        }        
         
         public void CopyPicture()
         {
@@ -61,10 +53,24 @@ namespace Backend
             return objectid.ToString();
         }
 
-        public string GetTag(string filename)
+        public string SetNameAndTags(string filename, string tags)
         {
-            var record = _db.LoadOnePicture("Pictures", new MongoDB.Bson.ObjectId($"{filename}"));
-            return record.Tags;
+            var objectid = _db.InsertOnePicture("Pictures", new Database.Models.PictureModel(filename, tags));
+
+            return objectid.ToString();
+        }
+
+        public string? GetTag(string filename)
+        {
+            try
+            {
+                var record = _db.LoadOnePicture("Pictures", new MongoDB.Bson.ObjectId($"{filename}"));
+                return record.Tags;
+            }
+            catch
+            {
+                return null;
+            }
 
         }
     }

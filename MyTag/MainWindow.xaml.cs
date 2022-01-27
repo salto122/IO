@@ -31,6 +31,7 @@ namespace MyTag
     public partial class MainWindow : Window
     {
         private static ListBox SelectedItemT;
+        public static string ImportedImageTags;
 
         public MainWindow()
         {
@@ -39,8 +40,7 @@ namespace MyTag
             LoadLogo();
 
             ImageLoadToFront();
-
-
+            
         }
 
         private void LoadLogo()
@@ -55,15 +55,11 @@ namespace MyTag
 
             if (selItem != null)
             {
-                var TEST = (ImageTest)selItem;
+                var TEST = (FrontendImage)selItem;
                 TB_TagList.Text = TEST.Tag.ToString();
             }
 
-
             Picture picture = new Picture();
-
-
-
 
             string imageStorePath = Settings.Default.StorePath.ToString();
             string[] imageNamesJPG = Directory.GetFiles(imageStorePath, "*.jpg");
@@ -74,10 +70,13 @@ namespace MyTag
             imageNamesJPG.Concat(imageNamesPNG);
             for (int i = 0; i < imageNames.Length; i++)
             {
-                tempNames[i] = imageNames[i].Substring(0 ,tempNames[i].Length - 4);
-                tempNames[i] = tempNames[i].Remove(0, 6);
-                
-                ListViewImages.Items.Add(new ImageTest($"{picture.GetTag(tempNames[i])}", imageNames[i], "IDCS_" + DateTime.Now.ToString()));
+                tempNames[i] = System.IO.Path.GetFileName(imageNames[i]);
+                tempNames[i] = tempNames[i].Substring(0, tempNames[i].Length - 4);
+
+                if (picture.GetTag(tempNames[i]) != null)
+                {
+                    ListViewImages.Items.Add(new FrontendImage($"{picture.GetTag(tempNames[i])}", imageNames[i], "IDCS_" + DateTime.Now.ToString()));
+                }
             }
         }
 
@@ -88,17 +87,17 @@ namespace MyTag
             if (ListViewImages.SelectedItem != null)
             {
                 SelectedItemT = item;
-                TB_TagList.Text = ((ImageTest)item.SelectedItem).Tag;
-                LB_Resolution.Content = "Resolution: " + ((ImageTest)item.SelectedItem).ResX.ToString() + " x " + ((ImageTest)item.SelectedItem).ResY.ToString();
-                LB_ImageName.Content = ((ImageTest)item.SelectedItem).IDCS.ToString();
-                LB_CreateDate.Content = "Create Date: " + GetCreateDate((ImageTest)item.SelectedItem);
-                LB_ImageSize.Content = "Size: " + GetFileSize((ImageTest)item.SelectedItem) + " KB";
+                TB_TagList.Text = ((FrontendImage)item.SelectedItem).Tag;
+                LB_Resolution.Content = "Resolution: " + ((FrontendImage)item.SelectedItem).ResX.ToString() + " x " + ((FrontendImage)item.SelectedItem).ResY.ToString();
+                LB_ImageName.Content = ((FrontendImage)item.SelectedItem).IDCS.ToString();
+                LB_CreateDate.Content = "Create Date: " + GetCreateDate((FrontendImage)item.SelectedItem);
+                LB_ImageSize.Content = "Size: " + GetFileSize((FrontendImage)item.SelectedItem) + " KB";
                 LB_AddDate.Content = "Added date: ";
             }
             if (ListViewImages.SelectedItem == null)
                 TB_TagList.Text = string.Empty;
-
         }
+
         private void ListViewImages_ContextMenuOpening(object sender, ContextMenuEventArgs e)
         {
             if (ListViewImages.SelectedItem == null)
@@ -151,36 +150,48 @@ namespace MyTag
             openFileDialog.Filter = "(*.jpg, *.png)|*.jpg;*.png";
             string selectedImagePath;
             string fileName;
+
             if (openFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-            selectedImagePath = openFileDialog.FileName;
-            fileName = System.IO.Path.GetFileName(selectedImagePath);
+                selectedImagePath = openFileDialog.FileName;
+                fileName = System.IO.Path.GetFileName(selectedImagePath);
 
                 Picture picture = new Picture();
-                fileName = picture.SetName(fileName) + ".jpg"; // .jpg placeholder - to fix
+
+                AddTagWindow MyAddTagWindow = new AddTagWindow();
+                MyAddTagWindow.ShowDialog();
 
                 if (!File.Exists(Settings.Default.StorePath))
                 {
-                    try
+                    if (AddTagWindow.AddTagStatusCaneled == false)
                     {
-                        File.Copy(selectedImagePath, Settings.Default.StorePath + @"\" + fileName);
+                        try
+                        {
+                            //fileName = picture.SetName(fileName) + ".jpg"; // .jpg placeholder - to fix
+                            fileName = picture.SetNameAndTags(fileName, MainWindow.ImportedImageTags) + ".jpg";
+
+                            File.Copy(selectedImagePath, Settings.Default.StorePath + @"\" + fileName);
+                        }
+
+                        catch (Exception)
+                        {
+                            MessageBox.Show(string.Format("{0} file already exist!", fileName));
+                        }
                     }
-                    catch (Exception )
+                    else
                     {
-                        MessageBox.Show(string.Format("{0} file already exist!", fileName));
+                        AddTagWindow.AddTagStatusCaneled = false;
                     }
                 }
-
             }
+            ReloadImagesInListBox();
+            Debug.WriteLine("AddTagStatusCaneled: " + AddTagWindow.AddTagStatusCaneled);
         }
 
         private void BT_Settings_CLick(object sender, RoutedEventArgs e)
         {
             SettingsWindow MySettingWindow = new SettingsWindow();
-
             MySettingWindow.ShowDialog();
-
-
         }
 
         private void BT_Search_Click(object sender, RoutedEventArgs e)
@@ -192,7 +203,7 @@ namespace MyTag
 
         }
 
-        public partial class ImageTest
+        public partial class FrontendImage
         {
             public string Tag { get; set; }
             public string ImagePath { get; set; }
@@ -203,7 +214,7 @@ namespace MyTag
 
             public string IDCS { get; set; }
 
-            public ImageTest(string tag, string imagePath, string idcs)
+            public FrontendImage(string tag, string imagePath, string idcs)
             {
                 Tag = tag;
                 ImagePath = imagePath;
@@ -213,16 +224,23 @@ namespace MyTag
                 IDCS = idcs;
             }
         }
-        public DateTime GetCreateDate(ImageTest image)
+        public DateTime GetCreateDate(FrontendImage image)
         {
             DateTime CreateDate = File.GetCreationTime(image.ImagePath);
             return CreateDate;
         }
 
-        public string GetFileSize(ImageTest image)
+        public string GetFileSize(FrontendImage image)
         {
             double size = Math.Round(new FileInfo(image.ImagePath).Length / 1024.0, 2);
             return size.ToString();
         }
+
+        private void ReloadImagesInListBox()
+        {
+            ListViewImages.Items.Clear();
+            ImageLoadToFront();
+        }
+
     }
 }
