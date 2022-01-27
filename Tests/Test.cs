@@ -4,14 +4,13 @@ using Backend.Database.Models;
 using MongoDB.Bson;
 using MongoDB.Driver;
 using NUnit.Framework;
-using System.Linq;
 
 namespace Tests
 {
     [TestFixture]
     public class TestClassTest
     {
-        private MongoBase dbTest = MongoBase.getDB();
+        private MongoBase dbTest = new MongoBase(MongoConnection.DatabaseName);
 
         [TestCase]
         public void DoesPictureHaveTags()
@@ -25,6 +24,7 @@ namespace Tests
             var user = dbTest.InsertOneUser("users", new UserModel("Anny", ""));
             Assert.IsTrue(user);
         }
+        
         [TestCase]
         public void DoesDeleteOnePictureWork()
         {
@@ -36,6 +36,25 @@ namespace Tests
             var filter = Builders<PictureModel>.Filter.Eq("_id", objectId);
 
             Assert.IsNull(collection.Find(filter).FirstOrDefault());
+        }
+        
+        [TestCase]
+        public void DoesUserClassMethodsWork()
+        {
+            User user = new User();
+            
+            Assert.IsFalse(user.AddUser("test_user"));
+            Assert.IsTrue(user.AddUser("test_user"));
+            
+            user.DeleteUser("test_user");
+        }        
+        
+        [TestCase]
+        public void DoesDbReturnTags()
+        {
+            Picture picture = new Picture();
+
+            Assert.Equals("Picture", picture.GetTag("test_picture.jpg"));
         }
     }
 }

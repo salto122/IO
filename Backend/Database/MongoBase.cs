@@ -13,32 +13,11 @@ namespace Backend.Database
     public class MongoBase
     {
         public IMongoDatabase db;
-        private static string DBname = "MyTag";
-        private static MongoBase instance;
-        private static readonly object _lock = new object();
 
-        private MongoBase() { }
-        
-        private static MongoBase getInstance()
+        public MongoBase(string databaseName)
         {
-            if (MongoBase.instance == null)
-            {
-                lock (_lock)
-                {
-                    if (instance == null)
-                    {
-                        instance = new MongoBase();
-                        var client = new MongoClient();
-                        instance.db = client.GetDatabase(DBname);
-                    }
-                }
-            }
-            return instance;
-        }
-
-        public static MongoBase getDB()
-        {
-            return getInstance();
+            var client = new MongoClient();
+            db = client.GetDatabase(databaseName);
         }
 
         public bool InsertOneUser(string table, UserModel record)

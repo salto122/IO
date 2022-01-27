@@ -13,7 +13,7 @@ namespace Backend
         {
             _tagList = tagList;
             this._objectId = objectId;
-            //_mongoBase = new MongoBase("baseName");
+            _mongoBase = new MongoBase("baseName");
         }
 
         public void SendTagsToDb()

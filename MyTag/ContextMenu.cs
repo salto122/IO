@@ -24,7 +24,7 @@ namespace MyTag
 
         private void CM_BT_OpenLocation(object sender, RoutedEventArgs e)
         {
-            string filePath = ((FrontendImage)SelectedItemT.SelectedItem).ImagePath;
+            string filePath = ((ImageTest)SelectedItemT.SelectedItem).ImagePath;
             string folderPath = Directory.GetParent(filePath).ToString();
 
             if (Directory.Exists(folderPath))
@@ -47,7 +47,7 @@ namespace MyTag
         private void CM_BT_Open(object sender, RoutedEventArgs e)
         {
 
-            string filePath = ((FrontendImage)SelectedItemT.SelectedItem).ImagePath;
+            string filePath = ((ImageTest)SelectedItemT.SelectedItem).ImagePath;
             if (File.Exists(filePath))
                 Process.Start("explorer.exe", filePath);
             else
@@ -69,19 +69,11 @@ namespace MyTag
         }
         private void CM_BT_CopyPath(object sender, RoutedEventArgs e)
         {
-            string path = ((FrontendImage)SelectedItemT.SelectedItem).ImagePath;
-            Debug.WriteLine(path);
-            Clipboard.SetText(path);
-        }
 
-        private void CM_BT_CopyImageCB(object sender, RoutedEventArgs e)
-        {
-            Clipboard.SetImage(((FrontendImage)SelectedItemT.SelectedItem).Image);
         }
-
         private void CM_BT_SaveOnDesktop(object sender, RoutedEventArgs e)
         {
-            string filePath = ((FrontendImage)SelectedItemT.SelectedItem).ImagePath;
+            string filePath = ((ImageTest)SelectedItemT.SelectedItem).ImagePath;
             string fileName = System.IO.Path.GetFileName(filePath);
             string desktopPath = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), fileName);
             if (File.Exists(filePath))
