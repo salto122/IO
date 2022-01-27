@@ -14,12 +14,10 @@ namespace Backend
 
             //picture.CopyPicture();
 
-            //User user = new User();
-
-            //var test = user.AddUser("Mat");
+            // User user = new User();
+            
+            // var test = user.AddUser("Mat");
             //user.DeleteUser("Mat");
-
-
         }
     }
 }

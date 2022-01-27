@@ -12,11 +12,10 @@ namespace Backend
         {
             _db = MongoBase.getDB();
         }
-
-
-        public bool AddUser(string username)
+        
+        public bool AddUser(UserModel username)
         {
-            return _db.InsertOneUser("Users", new UserModel(username, "")); // returns bool to check if that username exists
+            return _db.InsertOneUser("Users", _userModel.CreateUser()); // returns bool to check if that username exists
         }
 
         public void DeleteUser(string username)
