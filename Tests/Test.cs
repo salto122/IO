@@ -5,6 +5,8 @@ using MongoDB.Bson;
 using MongoDB.Driver;
 using NUnit.Framework;
 using System.Linq;
+using System.Diagnostics;
+
 
 namespace Tests
 {
@@ -37,5 +39,32 @@ namespace Tests
 
             Assert.IsNull(collection.Find(filter).FirstOrDefault());
         }
+    }
+    [TestFixture]
+    public class TestyMarcinka
+    {
+        private MongoBase dbTest = new MongoBase(MongoConnection.DatabaseName);
+        Picture tempPicture = new Picture();
+
+        [TestCase]
+        public void ImageNotExistInDataBase()
+        {
+            Assert.IsNull(tempPicture.GetTag("66fabd55a725255d65931b82"));//b³êdny ObjectID
+        }
+
+        [TestCase]
+        public void ImageExistInDataBase()
+        {
+            Assert.IsNotNull(tempPicture.GetTag("61fabd55a725255d65931b82"));
+        }
+
+        [TestCase]
+        public void CompareTags()
+        {
+            string tag = "#empty";
+            tempPicture.SetNameAndTags("22fabd55a725255d65931b82", tag);
+            Assert.AreEqual(tempPicture.GetTag("22fabd55a725255d65931b82"), tempPicture.GetTag("22fabd55a725255d65931b82"));
+        }
+
     }
 }

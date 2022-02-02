@@ -75,7 +75,7 @@ namespace MyTag
 
                 if (picture.GetTag(tempNames[i]) != null)
                 {
-                    ListViewImages.Items.Add(new FrontendImage($"{picture.GetTag(tempNames[i])}", imageNames[i], "IDCS_" + DateTime.Now.ToString()));
+                    ListViewImages.Items.Add(new FrontendImage($"{picture.GetTag(tempNames[i])}", imageNames[i],"Name: "+ tempNames[i]));
                 }
             }
         }
@@ -205,6 +205,7 @@ namespace MyTag
 
         public partial class FrontendImage
         {
+            public string ObjID { get; set; }
             public string Tag { get; set; }
             public string ImagePath { get; set; }
             public BitmapImage Image { get; set; }
